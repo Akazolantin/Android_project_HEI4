@@ -8,7 +8,7 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity {
 
     public void gotoOtherActivity(){
-        Intent intent = new Intent(this,OtherActivity.class);
+        Intent intent = new Intent(this,Transition.class);
         startActivity(intent);
     }
 

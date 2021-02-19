@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Draw_and_pass">
-        <activity android:name=".OtherActivity"></activity>
+        <activity android:name=".Start_game"></activity>
+        <activity android:name=".Transition" />
+        <activity android:name=".Guess_the_word" />
+        <activity android:name=".End_game" />
+        <activity android:name=".Drawing" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
