@@ -2,13 +2,51 @@ package com.example.draw_and_pass;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class Guess_the_word extends AppCompatActivity {
+
+    private EditText mReponse;
+    private Button mButtonToTransition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_the_word);
+        mButtonToTransition=(Button) findViewById(R.id.activity_guess_Button);
+        mReponse= (EditText) findViewById(R.id.activity_guess_edit_text);
+
+        mButtonToTransition.setEnabled(false);
+
+        mReponse.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mButtonToTransition.setEnabled(s.toString().length() != 0);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        mButtonToTransition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent transitionActivity = new Intent(Guess_the_word.this, Transition.class);
+                startActivity(transitionActivity);
+            }
+        });
     }
 }
