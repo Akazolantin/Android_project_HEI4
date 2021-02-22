@@ -12,6 +12,8 @@ import android.widget.EditText;
 
 public class Guess_the_word extends AppCompatActivity {
 
+    String Response_value;
+
     private EditText mReponse;
     private Button mButtonToTransition;
 
@@ -33,6 +35,7 @@ public class Guess_the_word extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mButtonToTransition.setEnabled(s.toString().length() != 0);
+                Response_value = mReponse.getText().toString();
             }
 
             @Override
@@ -44,6 +47,7 @@ public class Guess_the_word extends AppCompatActivity {
         mButtonToTransition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Response_value = mReponse.getText().toString();
                 Intent transitionActivity = new Intent(Guess_the_word.this, Transition.class);
                 startActivity(transitionActivity);
             }
