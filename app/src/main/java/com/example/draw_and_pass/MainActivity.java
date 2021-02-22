@@ -7,8 +7,8 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    public void gotoOtherActivity(){
-        Intent intent = new Intent(this,Transition.class);
+    public void goToStartGame(){
+        Intent intent = new Intent(this,Start_game.class);
         startActivity(intent);
     }
 
@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        goToStartGame();
 
     }
 }
