@@ -10,12 +10,14 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class Drawing extends Activity {
     private final String TAG="DrawingActivity";
@@ -24,6 +26,23 @@ public class Drawing extends Activity {
         Intent intent = new Intent(this,Transition.class);
         startActivity(intent);
     }
+    private TextView timer;
+
+    CountDownTimer countDownTimer= new CountDownTimer(90000,1000) {
+        @Override
+        public void onTick(long l) {
+            int seconds = (int) (l / 1000);
+            int minutes = seconds / 60;
+            seconds = seconds % 60;
+            timer.setText(String.format("%d:%02d", minutes, seconds));
+        }
+
+        @Override
+        public void onFinish() {
+            gotoTransitionActivity();
+        }
+    }.start();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +52,7 @@ public class Drawing extends Activity {
         DrawLineCanvas canvas = findViewById(R.id.canvas);
         ImageButton pinceau = (ImageButton) findViewById(R.id.pinceau);
         ImageButton gomme = (ImageButton) findViewById(R.id.gomme);
+        timer = (TextView) findViewById(R.id.timer);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

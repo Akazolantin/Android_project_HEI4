@@ -77,7 +77,8 @@
                 android:text="01:05"
                 android:textColor="#93B7BE"
                 android:gravity="center"
-                android:textSize="50dp"/>
+                android:textSize="50dp"
+                android:id="@+id/timer"/>
 
             <Button
                 android:layout_width="0dp"
