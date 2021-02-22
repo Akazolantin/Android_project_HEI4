@@ -29,11 +29,13 @@ public class End_game extends AppCompatActivity {
     private Game game;
 
 
-    //FIN
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        //events=Singleton.getInstance().getCurrentGame().getEvents();
+        //Lorsque l'app sera fini
+
+        //Initialisation juste pour les tests
         thomas = new User(1, "thomas", null);
         Event event1 = new Event(thomas, "salut tout le monde");
         events.add(event1);
@@ -41,7 +43,7 @@ public class End_game extends AppCompatActivity {
         Event event2 = new Event(thomas,image,"Citron");
         events.add(event2);
         game = new Game(1, 1, events, thomas);
-
+        //Fin initialisation pour les tests
 
         Log.d(TAG, "Success : Start onCreate");
         super.onCreate(savedInstanceState);
@@ -55,7 +57,6 @@ public class End_game extends AppCompatActivity {
 
 
     }
-
 
     public class SummaryAdapter extends RecyclerView.Adapter<SummaryAdapter.SummaryViewHolder> {
         @NonNull
@@ -77,7 +78,6 @@ public class End_game extends AppCompatActivity {
             return events.size();
         }
 
-
         public class SummaryViewHolder extends RecyclerView.ViewHolder {
 
             private ImageView imageView_icon_person;
@@ -94,7 +94,6 @@ public class End_game extends AppCompatActivity {
 
 
             }
-
 
             public void setSummary(Event event) {
                 phrase.setText(event.getPhraseTofind());
