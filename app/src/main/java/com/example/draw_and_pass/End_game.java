@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,7 +35,8 @@ public class End_game extends AppCompatActivity {
         thomas = new User(1, "thomas", null);
         Event event1 = new Event(thomas, "salut tout le monde");
         events.add(event1);
-        Event event2 = new Event(thomas, );
+        Bitmap image=Bitmap.createBitmap(500/*width*/, 500/*height*/, Bitmap.Config.ARGB_8888);
+        Event event2 = new Event(thomas,image,"Citron");
         events.add(event2);
         game = new Game(1, 1, events, thomas);
 
@@ -93,10 +95,14 @@ public class End_game extends AppCompatActivity {
 
 
             public void setSummary(Event event) {
-                phrase.setText(event.getPhrase());
+                if (event.getImage()!=null) {
+                    phrase.setText(event.getPhrase());
+                }else{
+                    phrase.setText(event.getPhraseTofind());
+                }
                 textView_name_person.setText(event.getUser().getName());
-                //drawing.setImageDrawable(event.getImage());
-                imageView_icon_person.setImageURI();
+                drawing.setImageBitmap(event.getImage());
+                //imageView_icon_person.setImageURI();
 
             }
         }
