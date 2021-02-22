@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class Drawing extends Activity {
-    private final String TAG="OtherActivity";
+    private final String TAG="DrawingActivity";
 
     public void gotoTransitionActivity(){
         Intent intent = new Intent(this,Transition.class);
