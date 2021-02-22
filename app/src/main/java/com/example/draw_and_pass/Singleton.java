@@ -16,15 +16,15 @@ public class Singleton {
         this.GameArrayList = new ArrayList<>();
     }
 
-    public void setGameArrayList(ArrayList<Game> restaurantArrayList) {
-        this.GameArrayList = restaurantArrayList;
+    public void setGameArrayList(ArrayList<Game> gameArrayList) {
+        this.GameArrayList = gameArrayList;
     }
 
     public void setCurrentGame(Game game){
         currentGame = game;
     }
 
-    public Game getCurrentRestaurant(){
+    public Game getCurrentGame(){
         return  currentGame;
     }
 
@@ -33,7 +33,7 @@ public class Singleton {
         return GameArrayList.get(position);
     }
 
-    public int getNumberOfRestaurant(){
+    public int getNumberOfGame(){
         return GameArrayList.size();
     }
 }
