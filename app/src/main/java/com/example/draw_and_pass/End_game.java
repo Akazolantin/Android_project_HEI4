@@ -34,9 +34,10 @@ public class End_game extends AppCompatActivity {
         thomas = new User(1, "thomas", null);
         Event event1 = new Event(thomas, "salut tout le monde");
         events.add(event1);
-        Event event2 = new Event(thomas, "salut personne");
+        Event event2 = new Event(thomas, );
         events.add(event2);
         game = new Game(1, 1, events, thomas);
+
 
         Log.d(TAG, "Success : Start onCreate");
         super.onCreate(savedInstanceState);
@@ -94,6 +95,9 @@ public class End_game extends AppCompatActivity {
             public void setSummary(Event event) {
                 phrase.setText(event.getPhrase());
                 textView_name_person.setText(event.getUser().getName());
+                //drawing.setImageDrawable(event.getImage());
+                imageView_icon_person.setImageURI();
+
             }
         }
     }
