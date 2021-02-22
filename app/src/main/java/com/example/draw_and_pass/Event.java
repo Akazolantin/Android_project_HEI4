@@ -1,15 +1,18 @@
 package com.example.draw_and_pass;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 
 public class Event {
     private User user;
-    private Image image;
+    private Bitmap image;
     private String phrase;
+    private String phraseTofind;
 
-    public Event(User user, Image image) {
+    public Event(User user, Bitmap image,String phraseTofind) {
         this.user = user;
         this.image = image;
+        this.phraseTofind=phraseTofind;
     }
 
     public Event(User user, String phrase) {
@@ -25,11 +28,11 @@ public class Event {
         this.user = user;
     }
 
-    public Image getImage() {
+    public Bitmap getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(Bitmap image) {
         this.image = image;
     }
 
@@ -39,5 +42,13 @@ public class Event {
 
     public void setPhrase(String phrase) {
         this.phrase = phrase;
+    }
+
+    public String getPhraseTofind() {
+        return phraseTofind;
+    }
+
+    public void setPhraseTofind(String phraseTofind) {
+        this.phraseTofind = phraseTofind;
     }
 }
