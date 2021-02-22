@@ -12,10 +12,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void gotoEnd_gameActivity(){
+        Intent intent = new Intent(this,End_game.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //gotoEnd_gameActivity();
 
     }
 }

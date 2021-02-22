@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".Guess_the_word">
 
+
+    <Button
+        android:id="@+id/activity_guess_Button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <EditText
+        android:id="@+id/activity_guess_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
