@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class End_game extends AppCompatActivity {
@@ -95,14 +97,15 @@ public class End_game extends AppCompatActivity {
 
 
             public void setSummary(Event event) {
-                if (event.getImage()!=null) {
-                    phrase.setText(event.getPhrase());
-                }else{
-                    phrase.setText(event.getPhraseTofind());
-                }
+                phrase.setText(event.getPhraseTofind());
+                phrase.setText(event.getPhrase());
+
+
                 textView_name_person.setText(event.getUser().getName());
                 drawing.setImageBitmap(event.getImage());
-                //imageView_icon_person.setImageURI();
+
+                String ImageURL = ( "https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" );
+                Picasso.get().load(ImageURL).into(imageView_icon_person);
 
             }
         }
