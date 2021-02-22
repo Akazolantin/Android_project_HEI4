@@ -6,13 +6,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -57,6 +60,7 @@ public class End_game extends AppCompatActivity {
 
 
     }
+
 
     public class SummaryAdapter extends RecyclerView.Adapter<SummaryAdapter.SummaryViewHolder> {
         @NonNull
@@ -107,6 +111,17 @@ public class End_game extends AppCompatActivity {
                 Picasso.get().load(ImageURL).into(imageView_icon_person);
 
             }
+
         }
+
+
+    }
+    public void ClickOnHome(View view) {
+    }
+
+    public void ClickOnShare(View view) {
+    }
+
+    public void ClickOnSave(View view) {
     }
 }
