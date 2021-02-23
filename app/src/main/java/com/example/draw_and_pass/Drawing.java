@@ -21,9 +21,16 @@ import android.widget.TextView;
 
 public class Drawing extends Activity {
     private final String TAG="DrawingActivity";
+    private static Game game;
+    private static User user;
+
+    public static void setGame(Game game) {
+        Drawing.game = game;
+    }
 
     public void gotoTransitionActivity(){
         Intent intent = new Intent(this,Transition.class);
+        Transition.setGame(game);
         startActivity(intent);
     }
     private TextView timer;

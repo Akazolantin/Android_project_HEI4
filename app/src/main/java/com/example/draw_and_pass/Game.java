@@ -7,6 +7,15 @@ public class Game {
     private int nbrevent;
     private ArrayList<Event> events;
     private User gagnant;
+    private Game instance;
+
+    public Game getInstance() {
+        return instance;
+    }
+
+    public void setInstance(Game instance) {
+        this.instance = instance;
+    }
 
     public Game(int id, int nbrevent, ArrayList<Event> events, User gagnant) {
         this.id = id;
