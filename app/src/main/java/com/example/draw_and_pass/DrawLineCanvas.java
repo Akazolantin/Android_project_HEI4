@@ -86,4 +86,8 @@ public class DrawLineCanvas extends View {
     public void setSize(int size){
         pLine.setStrokeWidth(size);
     }
+
+    public Bitmap getB() {
+        return b;
+    }
 }

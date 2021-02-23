@@ -23,6 +23,7 @@ public class Drawing extends Activity {
     private final String TAG="DrawingActivity";
     private static Game game;
     private static User user;
+    private DrawLineCanvas canvas;
 
     public static void setGame(Game game) {
         Drawing.game = game;
@@ -30,6 +31,7 @@ public class Drawing extends Activity {
 
     public void gotoTransitionActivity(){
         Intent intent = new Intent(this,Transition.class);
+        game.getEvents().get(-1).setImage(canvas.getB());
         Transition.setGame(game);
         startActivity(intent);
     }
@@ -54,9 +56,11 @@ public class Drawing extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        canvas  = findViewById(R.id.canvas);
         setContentView(R.layout.activity_drawing);
+        TextView phrase = (TextView) findViewById(R.id.phrase);
+        phrase.setText(game.getEvents().get(-2).getPhrase());
         Button button = (Button) findViewById(R.id.bouton);
-        DrawLineCanvas canvas = findViewById(R.id.canvas);
         ImageButton pinceau = (ImageButton) findViewById(R.id.pinceau);
         ImageButton gomme = (ImageButton) findViewById(R.id.gomme);
         timer = (TextView) findViewById(R.id.timer);

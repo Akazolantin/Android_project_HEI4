@@ -54,7 +54,8 @@
             android:gravity="center"
             android:textColor="#2D3047"
             android:textSize="20dp"
-            android:background="#93B7BE"/>
+            android:background="#93B7BE"
+            android:id="@+id/phrase"/>
         <com.example.draw_and_pass.DrawLineCanvas
             android:layout_width="match_parent"
             android:layout_height="0dp"
