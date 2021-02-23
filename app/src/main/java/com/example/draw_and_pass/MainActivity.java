@@ -12,9 +12,10 @@ public class MainActivity extends Activity {
 
     public void gotoOtherActivity(){
         Intent intent = new Intent(this,Transition.class);
-        startActivity(intent);
         Game game = new Game(0,4,null,null);// prendre les arguments sauvegardés dans le start game
         Transition.setGame(game);
+        startActivity(intent);
+
     }
 
     public void gotoEnd_gameActivity(){
@@ -27,6 +28,12 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_game);
 
-
+        Button button = (Button) findViewById(R.id.bouton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoOtherActivity();
+            }
+        });
     }
 }
