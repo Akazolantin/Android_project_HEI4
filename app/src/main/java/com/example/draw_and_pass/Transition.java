@@ -18,7 +18,7 @@ public class Transition extends AppCompatActivity {
     private Button mNextButton;
     private ImageButton mButtonProfil;
 
-    Game game = new Game();// prendre les arguments sauvegardés dans le start game
+    Game game ;// prendre les arguments sauvegardés dans le start game
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +50,8 @@ public class Transition extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                for(int i=0; i<Start_game.nbrevent; i++){ // retourner le nombre de tours de start game
-                    if (i%2 == 0){
+                for(int i=0; i<game.getNbrevent(); i++){ // retourner le nombre de tours de start game
+                    if (game.getCounter()%2==0){
                         Intent drawingActivity = new Intent(Transition.this, Drawing.class);
                         startActivity(drawingActivity);
                     } else{
