@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends Activity {
 
     int nbr_player;
@@ -24,7 +26,8 @@ public class MainActivity extends Activity {
 
     public void gotoOtherActivity(){
         Intent intent = new Intent(this,Transition.class);
-        Game game = new Game(0,nbr_player,null,null);// prendre les arguments sauvegardés dans le start game
+        Game game = new Game(0,nbr_player,new ArrayList<Event>(),null);// prendre les arguments sauvegardés dans le start game
+        game.addEvent(new Event(new User(0,"toto",null),"Thomas"));
         Transition.setGame(game);
         startActivity(intent);
     }
