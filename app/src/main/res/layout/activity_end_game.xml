@@ -20,12 +20,14 @@
         <ImageButton
             android:id="@+id/save"
             android:layout_width="match_parent"
-            android:layout_height="250px">
+            android:layout_height="250px"
+            android:onClick="ClickOnSave">
         </ImageButton>
         <ImageButton
             android:id="@+id/share"
             android:layout_width="match_parent"
-            android:layout_height="250px">
+            android:layout_height="250px"
+            android:onClick="ClickOnShare">
         </ImageButton>
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +36,8 @@
             <ImageButton
                 android:id="@+id/home"
                 android:layout_width="match_parent"
-                android:layout_height="250px">
+                android:layout_height="250px"
+                android:onClick="ClickOnHome">
             </ImageButton>
         </LinearLayout>
     </LinearLayout>

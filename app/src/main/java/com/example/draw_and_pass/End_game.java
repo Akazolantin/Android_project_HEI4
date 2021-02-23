@@ -5,17 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class End_game extends AppCompatActivity {
+public class End_game extends Activity {
     String TAG = "thomas";
 
     private RecyclerView recyclerView_summary;
@@ -26,17 +33,21 @@ public class End_game extends AppCompatActivity {
     private Game game;
 
 
-    //FIN
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        //events=Singleton.getInstance().getCurrentGame().getEvents();
+        //Lorsque l'app sera fini
+
+        //Initialisation juste pour les tests
         thomas = new User(1, "thomas", null);
         Event event1 = new Event(thomas, "salut tout le monde");
         events.add(event1);
-        Event event2 = new Event(thomas, "salut personne");
+        Bitmap image=Bitmap.createBitmap(500/*width*/, 500/*height*/, Bitmap.Config.ARGB_8888);
+        Event event2 = new Event(thomas,image,"Citron");
         events.add(event2);
         game = new Game(1, 1, events, thomas);
+        //Fin initialisation pour les tests
 
         Log.d(TAG, "Success : Start onCreate");
         super.onCreate(savedInstanceState);
@@ -47,7 +58,6 @@ public class End_game extends AppCompatActivity {
         recyclerView_summary.setHasFixedSize(true);
         adapter_userLine = new SummaryAdapter();
         recyclerView_summary.setAdapter(adapter_userLine);
-
 
     }
 
@@ -72,7 +82,6 @@ public class End_game extends AppCompatActivity {
             return events.size();
         }
 
-
         public class SummaryViewHolder extends RecyclerView.ViewHolder {
 
             private ImageView imageView_icon_person;
@@ -90,11 +99,29 @@ public class End_game extends AppCompatActivity {
 
             }
 
-
             public void setSummary(Event event) {
+                phrase.setText(event.getPhraseTofind());
                 phrase.setText(event.getPhrase());
+
+
                 textView_name_person.setText(event.getUser().getName());
+                drawing.setImageBitmap(event.getImage());
+
+                String ImageURL = ( "https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" );
+                Picasso.get().load(ImageURL).into(imageView_icon_person);
+
             }
+
         }
+
+
+    }
+    public void ClickOnHome(View view) {
+    }
+
+    public void ClickOnShare(View view) {
+    }
+
+    public void ClickOnSave(View view) {
     }
 }

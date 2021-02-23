@@ -18,7 +18,8 @@ public class Transition extends AppCompatActivity {
     private Button mNextButton;
     private ImageButton mButtonProfil;
 
-    Game game = new Game();// prendre les arguments sauvegardés dans le start game
+    private static
+    Game game = ()// prendre les arguments sauvegardés dans le start game
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
