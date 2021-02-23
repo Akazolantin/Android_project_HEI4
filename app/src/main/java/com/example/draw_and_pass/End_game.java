@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class End_game extends AppCompatActivity {
+public class End_game extends Activity {
     String TAG = "thomas";
 
     private RecyclerView recyclerView_summary;
@@ -57,7 +58,6 @@ public class End_game extends AppCompatActivity {
         recyclerView_summary.setHasFixedSize(true);
         adapter_userLine = new SummaryAdapter();
         recyclerView_summary.setAdapter(adapter_userLine);
-
 
     }
 
