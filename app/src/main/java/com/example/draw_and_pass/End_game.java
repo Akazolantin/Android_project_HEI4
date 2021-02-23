@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -102,7 +102,7 @@ public class End_game extends Activity {
                 drawing.setImageBitmap(event.getImage());
 
                 String ImageURL = ( "https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" );
-                Picasso.get().load(ImageURL).into(imageView_icon_person);
+                //Picasso.get().load(ImageURL).into(imageView_icon_person);
 
             }
 

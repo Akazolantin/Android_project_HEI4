@@ -58,13 +58,14 @@ public class Transition extends AppCompatActivity {
 
         mNextButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
-                User user = new User(0,mPseudo.getText().toString(),null);
+            public void onClick(View v) {
+                User user = new User(0, mPseudo.getText().toString(), null);
 
                 Event event = new Event(user);
                 game.addEvent(event);
                 // retourner le nombre de tours de start game
-                    if (game.getCounter()%2==0){
+                if (game.getCounter() < game.getNbrevent()) {
+                    if (game.getCounter() % 2 == 0) {
                         Log.d(TAG, "1");
                         Intent drawingActivity = new Intent(Transition.this, Drawing.class);
                         game.setCounter();
@@ -72,15 +73,19 @@ public class Transition extends AppCompatActivity {
                         startActivity(drawingActivity);
 
                         Log.d(TAG, "2");
-                    } else{
+                    } else {
                         Intent guessActivity = new Intent(Transition.this, Guess_the_word.class);
                         Guess_the_word.setGame(game);
                         startActivity(guessActivity);
                         Log.d(TAG, "3");
                         game.setCounter();
                     }
+                }else{
+                    Intent end = new Intent(Transition.this,End_game.class);
+                    End_game.setGame(game);
+                    startActivity(end);
                 }
-
+            }
         });
     }
 
