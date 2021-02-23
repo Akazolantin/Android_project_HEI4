@@ -12,14 +12,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
-    User user0 = new User(0,"toto",null);
-    Event event0 = new Event(user0, "phrase dedans");
     Game game = new Game(0,4,new ArrayList<Event>(),null);// prendre les arguments sauvegardés dans le start game
 
 
     public void gotoOtherActivity(){
         Intent intent = new Intent(this,Transition.class);
-        game.addEvent(event0);
         Transition.setGame(game);
         startActivity(intent);
 
@@ -34,7 +31,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        User user0 = new User(0,"toto",null);
+        Event event0 = new Event(user0, "phrase dedans");
+        game.addEvent(event0);
         Button button = (Button) findViewById(R.id.bouton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

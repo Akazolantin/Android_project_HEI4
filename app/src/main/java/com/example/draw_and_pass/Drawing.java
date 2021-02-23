@@ -26,6 +26,7 @@ public class Drawing extends Activity {
     private DrawLineCanvas canvas;
 
     public static void setGame(Game game) {
+
         Drawing.game = game;
     }
 

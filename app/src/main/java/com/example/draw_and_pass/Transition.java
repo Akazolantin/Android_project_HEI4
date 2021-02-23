@@ -65,11 +65,13 @@ public class Transition extends AppCompatActivity {
                         Log.d(TAG, "probleme transition");
                         Intent drawingActivity = new Intent(Transition.this, Drawing.class);
                         game.setCounter();
+                        Drawing.setGame(game);
                         startActivity(drawingActivity);
 
                         Log.d(TAG, "probleme transition");
                     } else{
                         Intent guessActivity = new Intent(Transition.this, Guess_the_word.class);
+                        Guess_the_word.setGame(game);
                         startActivity(guessActivity);
                         Log.d(TAG, "probleme transition");
                         game.setCounter();

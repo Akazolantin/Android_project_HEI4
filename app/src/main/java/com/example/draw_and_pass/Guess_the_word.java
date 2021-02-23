@@ -22,6 +22,11 @@ public class Guess_the_word extends AppCompatActivity {
 
     private static Game game;
 
+    public static void setGame(Game game) {
+
+        Guess_the_word.game = game;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
