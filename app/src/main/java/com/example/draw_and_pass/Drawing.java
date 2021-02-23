@@ -32,7 +32,7 @@ public class Drawing extends Activity {
 
     public void gotoTransitionActivity(){
         Intent intent = new Intent(this,Transition.class);
-        game.getEvents().get(-1).setImage(canvas.getB());
+        game.getEvents().get(game.getEvents().size()-1).setImage(canvas.getB());
         Transition.setGame(game);
         startActivity(intent);
     }
@@ -56,11 +56,12 @@ public class Drawing extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Log.d(TAG,"la list est "+game.getEvents().size());
         super.onCreate(savedInstanceState);
         canvas  = findViewById(R.id.canvas);
         setContentView(R.layout.activity_drawing);
         TextView phrase = (TextView) findViewById(R.id.phrase);
-        phrase.setText(game.getEvents().get(-2).getPhrase());
+        phrase.setText(game.getEvents().get(game.getEvents().size()-2).getPhrase());
         Button button = (Button) findViewById(R.id.bouton);
         ImageButton pinceau = (ImageButton) findViewById(R.id.pinceau);
         ImageButton gomme = (ImageButton) findViewById(R.id.gomme);

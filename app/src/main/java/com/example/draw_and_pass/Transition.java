@@ -58,22 +58,23 @@ public class Transition extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 User user = new User(0,mPseudo.getText().toString(),null);
+                Log.d(TAG, "salut: "+game);
                 Event event = new Event(user);
                 game.addEvent(event);
                 // retourner le nombre de tours de start game
                     if (game.getCounter()%2==0){
-                        Log.d(TAG, "probleme transition");
+                        Log.d(TAG, "1");
                         Intent drawingActivity = new Intent(Transition.this, Drawing.class);
                         game.setCounter();
                         Drawing.setGame(game);
                         startActivity(drawingActivity);
 
-                        Log.d(TAG, "probleme transition");
+                        Log.d(TAG, "2");
                     } else{
                         Intent guessActivity = new Intent(Transition.this, Guess_the_word.class);
                         Guess_the_word.setGame(game);
                         startActivity(guessActivity);
-                        Log.d(TAG, "probleme transition");
+                        Log.d(TAG, "3");
                         game.setCounter();
                     }
                 }

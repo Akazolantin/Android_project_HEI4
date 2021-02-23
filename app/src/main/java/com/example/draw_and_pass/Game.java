@@ -40,9 +40,8 @@ public class Game {
         this.events = events;
     }
 
-    public ArrayList<Event> addEvent(Event event){
+    public void addEvent(Event event){
         events.add(event);
-        return events;
     }
 
     public User getGagnant() {
