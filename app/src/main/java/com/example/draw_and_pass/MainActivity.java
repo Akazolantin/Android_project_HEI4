@@ -27,7 +27,6 @@ public class MainActivity extends Activity {
         Game game = new Game(0,nbr_player,null,null);// prendre les arguments sauvegardés dans le start game
         Transition.setGame(game);
         startActivity(intent);
-
     }
 
     public void gotoEnd_gameActivity(){
@@ -38,7 +37,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_start_game);
 
         mApplication_Name = (TextView)findViewById(R.id.activity_Application_Name);
         mNumber_of_player=(EditText)findViewById(R.id.activity_start_nombre_participants);
@@ -68,11 +67,7 @@ public class MainActivity extends Activity {
         mButton_to_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.setNbrevent(nbr_player);
-                Transition.setGame(game);
-                Intent transitionActivity = new Intent(getApplicationContext(),Transition.class);
-                startActivity(transitionActivity);
-
+                gotoOtherActivity();
             }
         });
         mButton_to_rules.setOnClickListener(new View.OnClickListener() {
