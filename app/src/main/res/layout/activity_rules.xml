@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Rules">
+
+    <TextView
+        android:id="@+id/activity_Rules_textView"
+        android:layout_width="342dp"
+        android:layout_height="516dp"
+        android:text="Le principe du jeu est le même que celui du téléphone arabe : à partir d'une phrase, le premier joueur doit dessiner pour essayer de faire deviner cette phrase au joueur suivant. Ensuite, le troisième joueur doit dessiner à nouveau pour faire deviner la phrase qu'a comprise le deuxième joueur, et ainsi de suite. À la fin du jeu, les joueurs comparent la dernière phrase devinée à la phrase de départ, celle-ci devant être la plus proche possible. En réalité, plus il y a de joueurs, moins les phrases seront similaires !"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_Rules_textView_Title"
+        android:layout_width="184dp"
+        android:layout_height="38dp"
+        android:text="Les règles :"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.049" />
+
+    <Button
+        android:id="@+id/activity_rule_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retour"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
+</androidx.constraintlayout.widget.ConstraintLayout>
