@@ -21,12 +21,15 @@
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="250px"
-            android:onClick="ClickOnSave">
+            android:scaleType="fitXY"
+            android:onClick="ClickOnSave"
+            android:src="@drawable/download">
         </ImageButton>
         <ImageButton
             android:id="@+id/share"
-            android:layout_width="match_parent"
             android:layout_height="250px"
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
             android:onClick="ClickOnShare"
             android:src="@drawable/share">
         </ImageButton>
@@ -38,7 +41,9 @@
                 android:id="@+id/home"
                 android:layout_width="match_parent"
                 android:layout_height="250px"
-                android:onClick="ClickOnHome">
+                android:scaleType="fitXY"
+                android:onClick="ClickOnHome"
+                android:src="@drawable/home">
             </ImageButton>
         </LinearLayout>
     </LinearLayout>
