@@ -37,7 +37,7 @@ public class Guess_the_word extends AppCompatActivity {
 
         mButtonToTransition.setEnabled(false);
 
-        mImageview.setImageBitmap(game.getEvents().get(-2).getImage());
+        mImageview.setImageBitmap(game.getEvents().get(game.getEvents().size()-2).getImage());
 
         mReponse.addTextChangedListener(new TextWatcher() {
             @Override
@@ -60,7 +60,7 @@ public class Guess_the_word extends AppCompatActivity {
         mButtonToTransition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getEvents().get(-1).setPhrase(Response_value);
+                game.getEvents().get(game.getEvents().size()-1).setPhrase(Response_value);
                 Response_value = mReponse.getText().toString();
                 Intent transitionActivity = new Intent(Guess_the_word.this, Transition.class);
                 startActivity(transitionActivity);

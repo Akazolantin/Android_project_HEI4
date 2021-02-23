@@ -22,8 +22,10 @@ public class Transition extends AppCompatActivity {
     private ImageButton mButtonProfil;
     private static Game game;
    private final String TAG = "toto";
+
     public static void setGame(Game game) {
         Transition.game = game;
+        Log.d("toto", "salut: "+game);
     }
 
     @Override
@@ -58,7 +60,7 @@ public class Transition extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 User user = new User(0,mPseudo.getText().toString(),null);
-                Log.d(TAG, "salut: "+game);
+
                 Event event = new Event(user);
                 game.addEvent(event);
                 // retourner le nombre de tours de start game
