@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +21,7 @@ public class Transition extends AppCompatActivity {
     private Button mNextButton;
     private ImageButton mButtonProfil;
     private static Game game;
-
+   private final String TAG = "toto";
     public static void setGame(Game game) {
         Transition.game = game;
     }
@@ -55,16 +57,25 @@ public class Transition extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                for(int i=0; i<game.getNbrevent(); i++){ // retourner le nombre de tours de start game
+                User user = new User(0,mPseudo.getText().toString(),null);
+                Event event = new Event(user);
+                game.addEvent(event);
+                // retourner le nombre de tours de start game
                     if (game.getCounter()%2==0){
+                        Log.d(TAG, "probleme transition");
                         Intent drawingActivity = new Intent(Transition.this, Drawing.class);
+                        game.setCounter();
                         startActivity(drawingActivity);
+
+                        Log.d(TAG, "probleme transition");
                     } else{
                         Intent guessActivity = new Intent(Transition.this, Guess_the_word.class);
                         startActivity(guessActivity);
+                        Log.d(TAG, "probleme transition");
+                        game.setCounter();
                     }
                 }
-            }
+
         });
     }
 

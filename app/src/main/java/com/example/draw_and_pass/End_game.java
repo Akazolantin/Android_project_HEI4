@@ -44,7 +44,7 @@ public class End_game extends Activity {
         Event event1 = new Event(thomas, "salut tout le monde");
         events.add(event1);
         Bitmap image=Bitmap.createBitmap(500/*width*/, 500/*height*/, Bitmap.Config.ARGB_8888);
-        Event event2 = new Event(thomas,image,"Citron");
+        Event event2 = new Event(thomas);
         events.add(event2);
         game = new Game(1, 1, events, thomas);
         //Fin initialisation pour les tests

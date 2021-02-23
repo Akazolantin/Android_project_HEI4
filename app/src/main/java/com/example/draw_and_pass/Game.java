@@ -40,6 +40,11 @@ public class Game {
         this.events = events;
     }
 
+    public ArrayList<Event> addEvent(Event event){
+        events.add(event);
+        return events;
+    }
+
     public User getGagnant() {
         return gagnant;
     }
@@ -48,11 +53,15 @@ public class Game {
         this.gagnant = gagnant;
     }
 
-    public int getCounter() {
-        for (int i = 0; i < getNbrevent(); i++) {
+    public int getCounter(){
+        return counter;
+    }
+    public void setCounter() {
+
+        if (nbrevent >= counter){
             counter++;
         }
-        return counter;
+
     }
 }
 

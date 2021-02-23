@@ -8,11 +8,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class MainActivity extends Activity {
+
+    User user0 = new User(0,"toto",null);
+    Event event0 = new Event(user0, "phrase dedans");
+    Game game = new Game(0,4,new ArrayList<Event>(),null);// prendre les arguments sauvegardés dans le start game
+
 
     public void gotoOtherActivity(){
         Intent intent = new Intent(this,Transition.class);
-        Game game = new Game(0,4,null,null);// prendre les arguments sauvegardés dans le start game
+        game.addEvent(event0);
         Transition.setGame(game);
         startActivity(intent);
 
