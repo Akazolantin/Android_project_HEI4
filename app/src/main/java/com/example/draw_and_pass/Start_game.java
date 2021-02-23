@@ -57,8 +57,8 @@ public class Start_game extends AppCompatActivity {
         mButton_to_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nbr_player=game.getNbrevent();
-
+                game.setNbrevent(nbr_player);
+                Transition.setGame(game);
                 Intent transitionActivity = new Intent(getApplicationContext(),Transition.class);
                 startActivity(transitionActivity);
 
