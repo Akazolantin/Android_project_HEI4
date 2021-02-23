@@ -14,7 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 
-public class Transition extends Activity {
+public class Transition extends AppCompatActivity {
     private EditText mPseudo;
     private Button mNextButton;
     private ImageButton mButtonProfil;
@@ -56,7 +56,7 @@ public class Transition extends Activity {
             @Override
             public void onClick(View v){
                 for(int i=0; i<game.getNbrevent(); i++){ // retourner le nombre de tours de start game
-                    if (i%2 == 0){
+                    if (game.getCounter()%2==0){
                         Intent drawingActivity = new Intent(Transition.this, Drawing.class);
                         startActivity(drawingActivity);
                     } else{

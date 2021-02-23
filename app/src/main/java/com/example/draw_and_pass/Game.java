@@ -7,15 +7,7 @@ public class Game {
     private int nbrevent;
     private ArrayList<Event> events;
     private User gagnant;
-    private Game instance;
-
-    public Game getInstance() {
-        return instance;
-    }
-
-    public void setInstance(Game instance) {
-        this.instance = instance;
-    }
+    private int counter = 0;
 
     public Game(int id, int nbrevent, ArrayList<Event> events, User gagnant) {
         this.id = id;
@@ -55,4 +47,12 @@ public class Game {
     public void setGagnant(User gagnant) {
         this.gagnant = gagnant;
     }
+
+    public int getCounter() {
+        for (int i = 0; i < getNbrevent(); i++) {
+            counter++;
+        }
+        return counter;
+    }
 }
+
