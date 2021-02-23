@@ -27,7 +27,8 @@
             android:id="@+id/share"
             android:layout_width="match_parent"
             android:layout_height="250px"
-            android:onClick="ClickOnShare">
+            android:onClick="ClickOnShare"
+            android:src="@drawable/share">
         </ImageButton>
         <LinearLayout
             android:layout_width="match_parent"

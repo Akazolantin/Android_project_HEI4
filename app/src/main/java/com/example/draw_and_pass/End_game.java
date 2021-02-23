@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class End_game extends Activity {
@@ -119,8 +120,12 @@ public class End_game extends Activity {
     }
 
     public void ClickOnShare(View view) {
+
+
+
     }
 
     public void ClickOnSave(View view) {
+
     }
 }
