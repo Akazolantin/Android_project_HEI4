@@ -64,7 +64,7 @@ public class Transition extends AppCompatActivity {
                 Event event = new Event(user);
                 game.addEvent(event);
                 // retourner le nombre de tours de start game
-                if (game.getCounter() < game.getNbrevent()) {
+
                     if (game.getCounter() % 2 == 0) {
                         Log.d(TAG, "1");
                         Intent drawingActivity = new Intent(Transition.this, Drawing.class);
@@ -80,11 +80,7 @@ public class Transition extends AppCompatActivity {
                         Log.d(TAG, "3");
                         game.setCounter();
                     }
-                }else{
-                    Intent end = new Intent(Transition.this,End_game.class);
-                    End_game.setGame(game);
-                    startActivity(end);
-                }
+
             }
         });
     }

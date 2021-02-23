@@ -62,9 +62,17 @@ public class Guess_the_word extends AppCompatActivity {
             public void onClick(View v) {
                 game.getEvents().get(game.getEvents().size()-1).setPhrase(Response_value);
                 Response_value = mReponse.getText().toString();
-                Intent transitionActivity = new Intent(Guess_the_word.this, Transition.class);
-                startActivity(transitionActivity);
+                Intent intent;
+                if (game.getCounter() < game.getNbrevent()) {
+                    intent= new Intent(Guess_the_word.this,Transition.class);
+                    Transition.setGame(game);
+                }else{
+                    intent = new Intent(Guess_the_word.this,End_game.class);
+                    End_game.setGame(game);
+                }
+                startActivity(intent);
             }
+
         });
     }
 }

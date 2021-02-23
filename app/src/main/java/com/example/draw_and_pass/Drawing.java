@@ -31,10 +31,15 @@ public class Drawing extends Activity {
     }
 
     public void gotoTransitionActivity(){
-        Intent intent = new Intent(this,Transition.class);
-        Log.d(TAG,"transitionnactdefgzrdsvqnjk");
+        Intent intent;
         game.getEvents().get(game.getEvents().size()-1).setImage(canvas.getB());
-        Transition.setGame(game);
+        if (game.getCounter() < game.getNbrevent()) {
+            intent= new Intent(this,Transition.class);
+            Transition.setGame(game);
+        }else{
+            intent = new Intent(this,End_game.class);
+            End_game.setGame(game);
+        }
         startActivity(intent);
     }
     private TextView timer;
