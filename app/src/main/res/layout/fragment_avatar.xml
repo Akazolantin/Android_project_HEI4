@@ -8,7 +8,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:lgravity="center"
+        android:gravity="center"
         android:id="@+id/imageview_avatar"
         tools:srcCompat="@tools:sample/avatars"/>
     <Button
