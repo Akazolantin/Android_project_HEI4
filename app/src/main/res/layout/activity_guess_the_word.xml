@@ -23,7 +23,7 @@
         android:id="@+id/activity_guess_edit_text"
         android:layout_width="305dp"
         android:layout_height="95dp"
-        android:text="Enter your response"
+        android:hint="Devine ce que c'est"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
