@@ -30,24 +30,18 @@ public class End_game extends Activity {
     private RecyclerView.Adapter adapter_userLine;
     private ArrayList<Event> events = new ArrayList<>();
     private User thomas;
-    private Game game;
+    private static Game game;
 
+    public static void setGame(Game game) {
+
+        End_game.game = game;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //events=Singleton.getInstance().getCurrentGame().getEvents();
-        //Lorsque l'app sera fini
+        events=game.getEvents();
 
-        //Initialisation juste pour les tests
-        thomas = new User(1, "thomas", null);
-        Event event1 = new Event(thomas, "salut tout le monde");
-        events.add(event1);
-        Bitmap image=Bitmap.createBitmap(500/*width*/, 500/*height*/, Bitmap.Config.ARGB_8888);
-        Event event2 = new Event(thomas);
-        events.add(event2);
-        game = new Game(1, 1, events, thomas);
-        //Fin initialisation pour les tests
 
         Log.d(TAG, "Success : Start onCreate");
         super.onCreate(savedInstanceState);
