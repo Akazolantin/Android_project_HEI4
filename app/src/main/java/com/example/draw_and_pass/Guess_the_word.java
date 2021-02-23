@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class Guess_the_word extends AppCompatActivity {
 
@@ -17,14 +18,21 @@ public class Guess_the_word extends AppCompatActivity {
     private EditText mReponse;
     private Button mButtonToTransition;
 
+    private ImageView mImageview;
+
+    private static Game game;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_the_word);
         mButtonToTransition=(Button) findViewById(R.id.activity_guess_Button);
         mReponse= (EditText) findViewById(R.id.activity_guess_edit_text);
+        mImageview=(ImageView)findViewById(R.id.activity_image_view);
 
         mButtonToTransition.setEnabled(false);
+
+        mImageview.setImageBitmap(game.getEvents().get(-1).getImage());
 
         mReponse.addTextChangedListener(new TextWatcher() {
             @Override
