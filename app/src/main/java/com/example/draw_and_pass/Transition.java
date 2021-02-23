@@ -2,6 +2,7 @@ package com.example.draw_and_pass;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,9 +18,12 @@ public class Transition extends AppCompatActivity {
     private EditText mPseudo;
     private Button mNextButton;
     private ImageButton mButtonProfil;
+    private static Game game;
 
-    private static
-    Game game = ()// prendre les arguments sauvegardés dans le start game
+    public static void setGame(Game game) {
+        Transition.game = game;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +55,8 @@ public class Transition extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                for(int i=0; i<Start_game.nbrevent; i++){ // retourner le nombre de tours de start game
-                    if (i%2 == 0){
+                for(int i=0; i<game.getNbrevent(); i++){ // retourner le nombre de tours de start game
+                    if (game.getCounter()%2==0){
                         Intent drawingActivity = new Intent(Transition.this, Drawing.class);
                         startActivity(drawingActivity);
                     } else{
