@@ -55,7 +55,6 @@ public class MainActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mButton_to_play.setEnabled(s.toString().length() != 0);
                 nbr_player = (int) Integer.parseInt(mNumber_of_player.getText().toString());
-
             }
 
             @Override

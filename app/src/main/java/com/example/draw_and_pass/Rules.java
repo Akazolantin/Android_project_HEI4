@@ -20,9 +20,7 @@ public class Rules extends AppCompatActivity {
         setContentView(R.layout.activity_rules);
         mTest_rules=(TextView)findViewById(R.id.activity_Rules_textView);
         mTest_rules_title=(TextView)findViewById(R.id.activity_Rules_textView_Title);
-        mRules_Button=(Button)findViewById(R.id.activity_rules_button);
-
-
+        mRules_Button=(Button)findViewById(R.id.activity_rule_button);
 
 
         mRules_Button.setOnClickListener(new View.OnClickListener() {
