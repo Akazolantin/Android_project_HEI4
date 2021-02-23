@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -100,17 +101,12 @@ public class End_game extends Activity {
 
             public void setSummary(Event event,int nbr) {
 
-                    drawing.setImageBitmap(event.getImage());
-                    phrase.setText(event.getPhrase());
 
 
 
-
-
-
+                drawing.setImageBitmap(event.getImage());
+                phrase.setText(event.getPhrase());
                 textView_name_person.setText(event.getUser().getName());
-
-
                 String ImageURL = ( "https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" );
                 Picasso.get().load(ImageURL).into(imageView_icon_person);
             }
