@@ -58,7 +58,6 @@ public class End_game extends AppCompatActivity {
         adapter_userLine = new SummaryAdapter();
         recyclerView_summary.setAdapter(adapter_userLine);
 
-
     }
 
 
