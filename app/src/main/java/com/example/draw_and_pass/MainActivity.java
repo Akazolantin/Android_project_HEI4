@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
-    Game game = new Game(0,4,new ArrayList<Event>(),null);// prendre les arguments sauvegardés dans le start game
+    Game game = new Game(0,3,new ArrayList<Event>(),null);// prendre les arguments sauvegardés dans le start game
 
 
     public void gotoOtherActivity(){

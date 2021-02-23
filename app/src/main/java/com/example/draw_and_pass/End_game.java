@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 //import com.squareup.picasso.Picasso;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class End_game extends Activity {
@@ -32,6 +34,9 @@ public class End_game extends Activity {
     private User thomas;
     private static Game game;
 
+    private int nrb=0;
+
+
     public static void setGame(Game game) {
 
         End_game.game = game;
@@ -39,7 +44,6 @@ public class End_game extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         events=game.getEvents();
 
 
@@ -66,7 +70,8 @@ public class End_game extends Activity {
 
         @Override
         public void onBindViewHolder(@NonNull SummaryViewHolder holder, int position) {
-            holder.setSummary(events.get(position));
+            holder.setSummary(events.get(position),nrb);
+            nrb++;
 
         }
 
@@ -93,17 +98,21 @@ public class End_game extends Activity {
 
             }
 
-            public void setSummary(Event event) {
-                phrase.setText(event.getPhraseTofind());
-                phrase.setText(event.getPhrase());
+            public void setSummary(Event event,int nbr) {
+
+                    drawing.setImageBitmap(event.getImage());
+                    phrase.setText(event.getPhrase());
+
+
+
+
 
 
                 textView_name_person.setText(event.getUser().getName());
-                drawing.setImageBitmap(event.getImage());
+
 
                 String ImageURL = ( "https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" );
-                //Picasso.get().load(ImageURL).into(imageView_icon_person);
-
+                Picasso.get().load(ImageURL).into(imageView_icon_person);
             }
 
         }

@@ -31,12 +31,6 @@
         android:layout_weight="0.8"
         android:orientation="vertical"
         android:layout_margin="20px">
-        <ImageView
-            android:id="@+id/drawing"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="0.8">
-        </ImageView>
         <TextView
             android:id="@+id/phrase"
             android:layout_width="match_parent"
@@ -45,5 +39,12 @@
             android:textAlignment="center"
             android:textSize="50px">
         </TextView>
+        <ImageView
+            android:id="@+id/drawing"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="0.8">
+        </ImageView>
+
     </LinearLayout>
 </LinearLayout>
