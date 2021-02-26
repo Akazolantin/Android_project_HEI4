@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
-    int nbr_player;
+    int nbr_player=2;
     private TextView mApplication_Name;
     private TextView mNumber_of_player;
     private Button mButton_to_rules;
@@ -52,6 +52,7 @@ public class MainActivity extends Activity {
 
         mApplication_Name = (TextView)findViewById(R.id.activity_Application_Name);
         mNumber_of_player=(TextView) findViewById(R.id.activity_start_nombre_participants);
+        mNumber_of_player.setText("Nombre de joueurs : "+nbr_player);
         mButton_to_rules=(Button)findViewById(R.id.activity_rules_button);
 
         mButton_to_play=(Button)findViewById(R.id.activity_play_button);
@@ -62,18 +63,17 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 nbr_player++;
-                String j = Integer.toString(nbr_player);
-                mNumber_of_player.setText(j);
+                mNumber_of_player.setText("Nombre de joueurs : "+nbr_player);
 
             }
         });
         mButton_to_decrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(nbr_player>2){
                 nbr_player--;
-                String j = Integer.toString(nbr_player);
-                mNumber_of_player.setText(j);
-            }
+                mNumber_of_player.setText("Nombre de joueurs : "+nbr_player);
+            }}
         });
 
         mButton_to_play.setOnClickListener(new View.OnClickListener() {
