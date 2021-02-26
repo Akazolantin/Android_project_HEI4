@@ -42,7 +42,6 @@ public class MainActivity extends Activity {
     public void goToRulesActivity(){
         Intent intent = new Intent(this,Rules.class);
         startActivity(intent);
-
     }
 
     @Override
@@ -88,9 +87,6 @@ public class MainActivity extends Activity {
                 goToRulesActivity();
             }
         });
-
-
-
     }
 }
 
