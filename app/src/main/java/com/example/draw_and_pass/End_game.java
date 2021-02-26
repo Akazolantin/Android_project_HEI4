@@ -117,15 +117,17 @@ public class End_game extends Activity {
 
     }
     public void ClickOnHome(View view) {
+
+
     }
 
     public void ClickOnShare(View view) {
 
 
-
     }
 
     public void ClickOnSave(View view) {
+
 
     }
 }
