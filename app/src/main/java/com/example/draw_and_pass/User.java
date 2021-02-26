@@ -1,13 +1,14 @@
 package com.example.draw_and_pass;
 
 import android.media.Image;
+import android.widget.ImageView;
 
 public class User {
     private int id;
     private String name;
     private Image icon;
 
-    User(int mid,String mname,Image micon){
+    User(int mid, String mname, Image micon){
         this.id=mid;
         this.name=mname;
         this.icon=micon;
@@ -35,9 +36,7 @@ public class User {
         this.name = name;
     }
 
-    public void setIcon(Image icon) {
-        this.icon = icon;
-    }
+
 
 
 }

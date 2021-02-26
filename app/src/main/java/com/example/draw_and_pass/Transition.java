@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.net.CookieHandler;
 import java.util.ArrayList;
 
 
@@ -36,6 +37,7 @@ public class Transition extends Activity {
    private int positionAvatar;
    private TextView mTextADeviner;
    private ImageView mImageADeviner;
+   private Image iconUser;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
     private boolean back_answer = false;
@@ -120,6 +122,7 @@ public class Transition extends Activity {
                     if(positionAvatar<(avatars.size()-1)){
                         positionAvatar++;
                         mImageProfil.setImageResource(avatars.get(positionAvatar));
+
                     }
                     else{
                         positionAvatar =0;
@@ -181,11 +184,13 @@ public class Transition extends Activity {
             public void onClick(View v) {
 
                 User user;
+
                 if(users==null){
                 user = new User(0, mPseudo.getText().toString(), null);}
                 else{
                     user = users.get(game.getCounter()+1);
                 }
+
 
                 Event event = new Event(user);
                 game.addEvent(event);

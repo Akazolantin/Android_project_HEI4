@@ -149,6 +149,7 @@ public class End_game extends Activity {
                 drawing.setImageBitmap(event.getImage());
                 phrase.setText(event.getPhrase());
                 textView_name_person.setText(event.getUser().getName());
+                //imageView_icon_person.setImageResource(event.getUser().getIcon());
                 String ImageURL = ( "https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" );
                 Picasso.get().load(ImageURL).into(imageView_icon_person);
             }
