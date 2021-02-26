@@ -36,5 +36,7 @@ public class User {
     public void setIcon(Image icon) {
         this.icon = icon;
     }
+
+
 }
 

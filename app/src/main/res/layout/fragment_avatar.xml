@@ -9,9 +9,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:id="@+id/imageview_avatar"
+        android:id="@+id/imageview_avatar_choix"
         tools:srcCompat="@tools:sample/avatars"/>
     <Button
+        android:id="@+id/bouton_choix_avatar"
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_marginLeft="40dp"

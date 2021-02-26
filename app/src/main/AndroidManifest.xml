@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Draw_and_pass">
         <activity android:name=".Rules"></activity>
+        <activity android:name=".Choix_Avatar"/>
         <activity android:name=".Start_game" />
         <activity android:name=".Transition" />
         <activity android:name=".Guess_the_word" />
