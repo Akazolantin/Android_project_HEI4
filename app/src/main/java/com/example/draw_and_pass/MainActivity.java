@@ -33,6 +33,11 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this,End_game.class);
         startActivity(intent);
     }
+    public void goToRulesActivity(){
+        Intent intent = new Intent(this,Rules.class);
+        startActivity(intent);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +47,7 @@ public class MainActivity extends Activity {
         mApplication_Name = (TextView)findViewById(R.id.activity_Application_Name);
         mNumber_of_player=(EditText)findViewById(R.id.activity_start_nombre_participants);
         mButton_to_rules=(Button)findViewById(R.id.activity_rules_button);
-
         mButton_to_play=(Button)findViewById(R.id.activity_play_button);
-
         mNumber_of_player.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -73,8 +76,7 @@ public class MainActivity extends Activity {
         mButton_to_rules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent RulesActivity = new Intent(getApplicationContext(),Rules.class);
-                startActivity(RulesActivity);
+                goToRulesActivity();
 
             }
         });
