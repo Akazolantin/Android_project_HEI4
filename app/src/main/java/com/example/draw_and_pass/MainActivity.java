@@ -16,9 +16,12 @@ public class MainActivity extends Activity {
 
     int nbr_player;
     private TextView mApplication_Name;
-    private EditText mNumber_of_player;
+    private TextView mNumber_of_player;
     private Button mButton_to_rules;
+
     private Button mButton_to_play;
+    private Button mButton_to_increment;
+    private Button mButton_to_decrement;
     private static Game game;
 
 
@@ -45,25 +48,28 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_start_game);
 
         mApplication_Name = (TextView)findViewById(R.id.activity_Application_Name);
-        mNumber_of_player=(EditText)findViewById(R.id.activity_start_nombre_participants);
+        mNumber_of_player=(TextView) findViewById(R.id.activity_start_nombre_participants);
         mButton_to_rules=(Button)findViewById(R.id.activity_rules_button);
+
         mButton_to_play=(Button)findViewById(R.id.activity_play_button);
-        mNumber_of_player.addTextChangedListener(new TextWatcher() {
+        mButton_to_increment=(Button)findViewById(R.id.activity_increment_button);
+        mButton_to_decrement=(Button)findViewById(R.id.activity_decrement_button);
+
+        mButton_to_increment.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void onClick(View v) {
+                nbr_player++;
+                String j = Integer.toString(nbr_player);
+                mNumber_of_player.setText(j);
 
             }
-
+        });
+        mButton_to_decrement.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mButton_to_play.setEnabled(s.toString().length() != 0);
-                nbr_player = (int) Integer.parseInt(mNumber_of_player.getText().toString());
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            public void onClick(View v) {
+                nbr_player--;
+                String j = Integer.toString(nbr_player);
+                mNumber_of_player.setText(j);
             }
         });
 
@@ -77,9 +83,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 goToRulesActivity();
-
             }
         });
+
 
 
     }

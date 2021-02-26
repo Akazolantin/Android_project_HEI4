@@ -28,7 +28,7 @@
             android:textSize="40dp" />
     </LinearLayout>
 
-    <EditText
+    <TextView
         android:id="@+id/activity_start_nombre_participants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,22 +37,12 @@
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.448" />
 
-    <Button
-        android:id="@+id/activity_rules_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rules"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+
 
     <Button
         android:id="@+id/activity_play_button"
@@ -64,6 +54,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.676" />
+
+    <Button
+        android:id="@+id/activity_increment_button"
+        android:layout_width="58dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="108dp"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.418" />
+
+    <Button
+        android:id="@+id/activity_decrement_button"
+        android:layout_width="59dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="108dp"
+        android:text="-"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.478" />
+
+    <Button
+        android:id="@+id/activity_rules_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Règles"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

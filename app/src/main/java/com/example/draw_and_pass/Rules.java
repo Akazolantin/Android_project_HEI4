@@ -28,8 +28,8 @@ public class Rules extends AppCompatActivity {
         mRules_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Main_activity = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(Main_activity);
+                Intent otherActivity = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(otherActivity);
                 finish();
 
             }
