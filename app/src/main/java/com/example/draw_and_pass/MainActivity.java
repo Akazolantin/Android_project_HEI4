@@ -24,6 +24,8 @@ public class MainActivity extends Activity {
     private Button mButton_to_play;
     private static Game game;
     private String Tag = "MainActivity";
+    private Button mButton_to_increment;
+    private Button mButton_to_decrement;
 
 
     public void gotoOtherActivity(){
@@ -49,6 +51,28 @@ public class MainActivity extends Activity {
         mButton_to_rules=(Button)findViewById(R.id.activity_rules_button);
 
         mButton_to_play=(Button)findViewById(R.id.activity_play_button);
+
+        mButton_to_play=(Button)findViewById(R.id.activity_play_button);
+        mButton_to_increment=(Button)findViewById(R.id.activity_increment_button);
+        mButton_to_decrement=(Button)findViewById(R.id.activity_decrement_button);
+
+        mButton_to_increment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nbr_player++;
+                String j = Integer.toString(nbr_player);
+                mNumber_of_player.setText(j);
+
+            }
+        });
+        mButton_to_decrement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nbr_player--;
+                String j = Integer.toString(nbr_player);
+                mNumber_of_player.setText(j);
+            }
+        });
 
         mNumber_of_player.addTextChangedListener(new TextWatcher() {
             @Override
