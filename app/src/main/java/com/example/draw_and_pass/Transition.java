@@ -179,6 +179,7 @@ public class Transition extends Activity {
         mNextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+
                 User user;
                 if(users==null){
                 user = new User(0, mPseudo.getText().toString(), null);}
@@ -208,6 +209,7 @@ public class Transition extends Activity {
 
             }
         });
+
 
 
     }
