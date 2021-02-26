@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +41,35 @@ public class End_game extends Activity {
     private static Game game;
 
     private int nrb=0;
+    ///////////////////////////////////////////////////////////////
+    private boolean back_answer = false;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (game.getCounter()>0) {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                boolean debugState = false;
+                if (debugState) {
+                    Toast.makeText(this, "BACK key press", Toast.LENGTH_SHORT).show();
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Vous ne pouvez pas tricher !")
+                        .setCancelable(false)
+                        .setPositiveButton("Oh MINCE !!!", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                back_answer = true;
+                            }
+                        });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+
+        }
+        return back_answer;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////
 
     public void restart(){
         Intent start = new Intent(this,Transition.class);

@@ -3,18 +3,23 @@ package com.example.draw_and_pass;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,6 +33,39 @@ public class Transition extends Activity {
     private static Game game;
    private final String TAG = "toto";
    private static ArrayList<User> users;
+   private int positionAvatar;
+   private TextView mTextADeviner;
+   private ImageView mImageADeviner;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+    private boolean back_answer = false;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (game.getCounter()>0) {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                boolean debugState = false;
+                if (debugState) {
+                    Toast.makeText(this, "BACK key press", Toast.LENGTH_SHORT).show();
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Vous ne pouvez pas tricher !")
+                        .setCancelable(false)
+                        .setPositiveButton("Oh MINCE !", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                back_answer = true;
+                            }
+                        });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+
+        }
+        return back_answer;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
 
     public static void setUsers(ArrayList<User> userArrayList) {
         Transition.users = userArrayList;
@@ -42,6 +80,7 @@ public class Transition extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        positionAvatar=0;
         if(users ==null) {
             setContentView(R.layout.activity_transition);
             mImageProfil=(ImageView) findViewById(R.id.activity_transition_profil);
@@ -50,6 +89,8 @@ public class Transition extends Activity {
             mButtonDown=(Button) findViewById(R.id.transition_button_down);
             mNextButton = (Button) findViewById(R.id.activity_transition_next_activity);
             mNextButton.setEnabled(false);
+            mTextADeviner=(TextView) findViewById(R.id.texte_trouve_avant);
+            mImageADeviner=(ImageView) findViewById(R.id.image_dessine_avant);
 
             mPseudo = (EditText) findViewById(R.id.activity_transition_pseudo);
             mNextButton = (Button) findViewById(R.id.activity_transition_next_activity);
@@ -69,15 +110,44 @@ public class Transition extends Activity {
             avatars.add(R.drawable.boy1);
             avatars.add(R.drawable.reporter);
 
+
+            mImageProfil.setImageResource(avatars.get(positionAvatar));
             mButtonUp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent choix_avatar = new Intent(Transition.this, Choix_Avatar.class);
-                    startActivity(choix_avatar);
+
+
+                    if(positionAvatar<(avatars.size()-1)){
+                        positionAvatar++;
+                        mImageProfil.setImageResource(avatars.get(positionAvatar));
+                    }
+                    else{
+                        positionAvatar =0;
+                        mImageProfil.setImageResource(avatars.get(positionAvatar));
+                    }
+                }
+            });
+            mButtonDown.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(positionAvatar==0){
+                        positionAvatar=8;
+                        mImageProfil.setImageResource(avatars.get(positionAvatar));
+                    }
+                    else{
+                        positionAvatar--;
+                        mImageProfil.setImageResource(avatars.get(positionAvatar));
+                    }
                 }
             });
 
-        mImageProfil.setImageResource(avatars.get(0));
+            if (game.getEvents().get(game.getEvents().size()-1).getImage() !=null){
+                mImageADeviner.setImageBitmap(game.getEvents().get(game.getEvents().size()-1).getImage());
+            }
+            else{
+                mTextADeviner.setText(game.getEvents().get(game.getEvents().size()-1).getPhrase());
+            }
+
         mPseudo.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -138,6 +208,8 @@ public class Transition extends Activity {
 
             }
         });
+
+
     }
 
 }
