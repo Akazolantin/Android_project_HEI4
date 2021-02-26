@@ -15,8 +15,10 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class Drawing extends Activity {
@@ -94,6 +96,61 @@ public class Drawing extends Activity {
                 canvas.setSize(75);
             }
         });
+        int[] Colors = new int[]{
+                0xffF44336,
+                0xffE91E63,
+                0xff9C27B0,
+                0xff673AB7,
+                0xff3F51B5,
+                0xff2196F3,
+                0xff03A9F4,
+                0xff00BCD4,
+                0xff009688,
+                0xff4CAF50,
+                0xff8BC34A,
+                0xffCDDC39,
+                0xffFFEB3B,
+                0xffFFC107,
+                0xffFF9800,
+                0xffFF5722,
+                0xff795548,
+                0xff9E9E9E,
+                0xff607D8B,
+                0xffFFFFFF
+        };
+        LinearLayout linearUp= (LinearLayout) findViewById(R.id.color_up);
+        LinearLayout linearDown= (LinearLayout) findViewById(R.id.color_down);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, 100);
+        lp.weight = linearDown.getWeightSum()/(Colors.length/2);
+        View.OnClickListener btnClicked = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                canvas.setColor(Colors[(int)view.getTag()]);
+            }
+        };
+
+            for (int i = 0; i < Colors.length/2; i++) {
+                Button btnWord = new Button(this);
+                btnWord.setTag(i);
+                btnWord.setHeight(100);
+                btnWord.setWidth(10);
+                btnWord.setLayoutParams(lp);
+                btnWord.setBackgroundColor(Colors[i]);
+                btnWord.setOnClickListener(btnClicked);
+                linearUp.addView(btnWord);
+            }
+
+        for (int i = Colors.length/2; i < Colors.length; i++) {
+            Button btnWord = new Button(this);
+            btnWord.setTag(i);
+            btnWord.setWidth(10);
+            btnWord.setHeight(100);
+            btnWord.setLayoutParams(lp);
+            btnWord.setBackgroundColor(Colors[i]);
+            btnWord.setOnClickListener(btnClicked);
+            linearDown.addView(btnWord);
+        }
+
     }
 
 }
