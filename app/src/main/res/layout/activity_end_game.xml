@@ -39,11 +39,14 @@
             android:gravity="bottom">
             <ImageButton
                 android:id="@+id/home"
-                android:layout_width="match_parent"
-                android:layout_height="250px"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:layout_margin="20px"
+
                 android:scaleType="fitXY"
                 android:onClick="ClickOnHome"
-                android:src="@drawable/home">
+                android:src="@drawable/home"
+                android:background="@color/white">
             </ImageButton>
         </LinearLayout>
     </LinearLayout>
