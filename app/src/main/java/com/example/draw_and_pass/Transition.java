@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 public class Transition extends AppCompatActivity {
     private EditText mPseudo;
@@ -22,6 +24,12 @@ public class Transition extends AppCompatActivity {
     private ImageButton mButtonProfil;
     private static Game game;
    private final String TAG = "toto";
+   private static ArrayList<User> users;
+
+    public static void setUsers(ArrayList<User> userArrayList) {
+        Transition.users = userArrayList;
+        Log.d("toto", "salut: "+userArrayList);
+    }
 
     public static void setGame(Game game) {
         Transition.game = game;
@@ -31,35 +39,49 @@ public class Transition extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transition);
-        mPseudo = (EditText) findViewById(R.id.activity_transition_pseudo);
-        mButtonProfil= (ImageButton) findViewById(R.id.activity_transition_profil);
-        mNextButton = (Button) findViewById(R.id.activity_transition_next_activity);
+        if(users ==null) {
+            setContentView(R.layout.activity_transition);
+            mPseudo = (EditText) findViewById(R.id.activity_transition_pseudo);
+            mButtonProfil = (ImageButton) findViewById(R.id.activity_transition_profil);
+            mNextButton = (Button) findViewById(R.id.activity_transition_next_activity);
 
-        mNextButton.setEnabled(false);
+            mNextButton.setEnabled(false);
 
-        mPseudo.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            mPseudo.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
+                }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mNextButton.setEnabled(s.toString().length() >1);
-            }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    mNextButton.setEnabled(s.toString().length() > 1);
+                }
 
-            @Override
-            public void afterTextChanged(Editable s) {
+                @Override
+                public void afterTextChanged(Editable s) {
 
-            }
-        });
-
+                }
+            });
+        }
+        else{
+            setContentView(R.layout.activity_transition_alt);
+            mNextButton = (Button) findViewById(R.id.activity_transition_next_activity);
+            mButtonProfil = (ImageButton) findViewById(R.id.activity_transition_profil);
+            //mButtonProfil.setImage(users.get(game.getCounter()).getIcon());
+            TextView pseudo = (TextView) findViewById(R.id.activity_transition_pseudo);
+            pseudo.setText(users.get(game.getCounter()+1).getName());
+        }
 
         mNextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                User user = new User(0, mPseudo.getText().toString(), null);
+                User user;
+                if(users==null){
+                user = new User(0, mPseudo.getText().toString(), null);}
+                else{
+                    user = users.get(game.getCounter()+1);
+                }
 
                 Event event = new Event(user);
                 game.addEvent(event);

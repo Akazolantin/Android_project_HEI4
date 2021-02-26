@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.Image;
@@ -38,17 +39,26 @@ public class End_game extends Activity {
 
     private int nrb=0;
 
+    public void restart(){
+        Intent start = new Intent(this,Transition.class);
+        Game newGame= new Game(game.getId()+1,game.getNbrevent(),new ArrayList<Event>(),null);
+        game.addEvent(new Event(game.getEvents().get(0).getUser(),"Thomas"));
+        ArrayList<User> users = new ArrayList<User>();
+        for(Event event : game.getEvents()){
+            users.add(event.getUser());
+        }
+        Transition.setGame(newGame);
+        Transition.setUsers(users);
+        startActivity(start);
+    }
 
     public static void setGame(Game game) {
-
         End_game.game = game;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         events=game.getEvents();
-
-
         Log.d(TAG, "Success : Start onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_game);
@@ -58,7 +68,6 @@ public class End_game extends Activity {
         recyclerView_summary.setHasFixedSize(true);
         adapter_userLine = new SummaryAdapter();
         recyclerView_summary.setAdapter(adapter_userLine);
-
     }
 
 
@@ -74,7 +83,6 @@ public class End_game extends Activity {
         public void onBindViewHolder(@NonNull SummaryViewHolder holder, int position) {
             holder.setSummary(events.get(position),nrb);
             nrb++;
-
         }
 
         @Override

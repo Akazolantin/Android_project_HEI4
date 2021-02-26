@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android=
+    "http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Transition"
+    android:orientation="vertical"
+    android:gravity="bottom">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_gravity="bottom">
+        <ImageButton
+            android:id="@+id/activity_transition_profil"
+            android:layout_weight="0.75"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            tools:srcCompat="@tools:sample/avatars" />
+        <TextView
+            android:id="@+id/activity_transition_pseudo"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:hint="Entre ton pseudo"
+            android:textSize="20dp"
+            />
+
+        <Button
+            android:id="@+id/activity_transition_next_activity"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.73"
+            android:layout_gravity="center"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+</LinearLayout>

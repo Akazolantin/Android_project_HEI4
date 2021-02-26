@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ public class MainActivity extends Activity {
     private Button mButton_to_rules;
     private Button mButton_to_play;
     private static Game game;
+    private String Tag = "MainActivity";
 
 
     public void gotoOtherActivity(){
@@ -57,7 +59,11 @@ public class MainActivity extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mButton_to_play.setEnabled(s.toString().length() != 0);
-                nbr_player = (int) Integer.parseInt(mNumber_of_player.getText().toString());
+                try{
+                nbr_player = (int) Integer.parseInt(mNumber_of_player.getText().toString());}
+                catch(NumberFormatException e){
+                    Log.d(Tag,"erreur");
+                }
             }
 
             @Override
