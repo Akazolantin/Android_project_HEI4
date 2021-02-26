@@ -40,6 +40,7 @@ public class Drawing extends Activity {
             intent = new Intent(this,End_game.class);
             End_game.setGame(game);
         }
+        countDownTimer.cancel();
         startActivity(intent);
     }
     private TextView timer;
