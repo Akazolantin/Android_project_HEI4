@@ -25,6 +25,8 @@ public class User {
         return name;
     }
 
+    public void setIcon() {this.icon = icon; }
+
     public Image getIcon() {
         return icon;
     }

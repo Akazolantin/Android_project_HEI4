@@ -38,7 +38,7 @@
                 android:layout_height="150px"
                 android:layout_margin="20px"
                 android:scaleType="fitXY"
-                android:onClick="ClickOnShare"
+                android:onClick="ClickOnRefresh"
                 android:src="@drawable/refresh"
                 android:background="@color/white">
             </ImageButton>

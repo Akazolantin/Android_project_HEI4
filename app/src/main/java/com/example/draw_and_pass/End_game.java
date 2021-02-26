@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +27,7 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -38,6 +42,35 @@ public class End_game extends Activity {
     private static Game game;
 
     private int nrb=0;
+    ///////////////////////////////////////////////////////////////
+    private boolean back_answer = false;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (game.getCounter()>0) {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                boolean debugState = false;
+                if (debugState) {
+                    Toast.makeText(this, "BACK key press", Toast.LENGTH_SHORT).show();
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Vous ne pouvez pas tricher !")
+                        .setCancelable(false)
+                        .setPositiveButton("Oh MINCE !!!", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                back_answer = true;
+                            }
+                        });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+
+        }
+        return back_answer;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////
 
     public void restart(){
         Intent start = new Intent(this,Transition.class);
@@ -125,17 +158,33 @@ public class End_game extends Activity {
 
     }
     public void ClickOnHome(View view) {
-
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
 
     }
 
     public void ClickOnShare(View view) {
 
 
+
+        try {
+            ArrayList<Bitmap> lstImage= new ArrayList<Bitmap>();
+            for (int nb=0;nb<events.size();nb++){
+                lstImage.add(game.getEvents().get(nb).getImage());
+                if (game.getEvents().get(nb).getImage() != null) {
+                    FileOutputStream fileOutputStream = this.openFileOutput(game.getEvents().get(nb).getPhrase() + "_dessiné_par_" + game.getEvents().get(nb).getUser(), this.MODE_PRIVATE);
+                    game.getEvents().get(nb).getImage().compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+                    fileOutputStream.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
-    public void ClickOnSave(View view) {
-
+    public void ClickOnRefresh(View view) {
+        restart();
 
     }
 }

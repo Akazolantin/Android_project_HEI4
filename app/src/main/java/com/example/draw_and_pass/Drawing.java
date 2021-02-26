@@ -3,7 +3,9 @@ package com.example.draw_and_pass;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -13,6 +15,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Drawing extends Activity {
     private final String TAG="DrawingActivity";
@@ -31,6 +35,36 @@ public class Drawing extends Activity {
 
         Drawing.game = game;
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    private boolean back_answer = false;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (game.getCounter()>0) {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                boolean debugState = false;
+                if (debugState) {
+                    Toast.makeText(this, "BACK key press", Toast.LENGTH_SHORT).show();
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Vous ne pouvez pas tricher !")
+                        .setCancelable(false)
+                        .setPositiveButton("Oh MINCE !!", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                back_answer = true;
+                            }
+                        });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+
+        }
+        return back_answer;
+    }
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     public void gotoTransitionActivity(){
         Intent intent;
