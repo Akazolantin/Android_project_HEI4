@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -125,17 +126,33 @@ public class End_game extends Activity {
 
     }
     public void ClickOnHome(View view) {
-
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
 
     }
 
     public void ClickOnShare(View view) {
 
 
+
+        try {
+            ArrayList<Bitmap> lstImage= new ArrayList<Bitmap>();
+            for (int nb=0;nb<events.size();nb++){
+                lstImage.add(game.getEvents().get(nb).getImage());
+                if (game.getEvents().get(nb).getImage() != null) {
+                    FileOutputStream fileOutputStream = this.openFileOutput(game.getEvents().get(nb).getPhrase() + "_dessiné_par_" + game.getEvents().get(nb).getUser(), this.MODE_PRIVATE);
+                    game.getEvents().get(nb).getImage().compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+                    fileOutputStream.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
-    public void ClickOnSave(View view) {
-
+    public void ClickOnRefresh(View view) {
+        restart();
 
     }
 }
