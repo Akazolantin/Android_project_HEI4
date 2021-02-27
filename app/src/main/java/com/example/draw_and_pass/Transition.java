@@ -112,7 +112,6 @@ public class Transition extends Activity {
             avatars.add(R.drawable.boy1);
             avatars.add(R.drawable.reporter);
 
-
             mImageProfil.setImageResource(avatars.get(positionAvatar));
             mButtonUp.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -186,7 +185,10 @@ public class Transition extends Activity {
                 User user;
 
                 if(users==null){
-                user = new User(0, mPseudo.getText().toString(), null);}
+
+                user = new User(0, mPseudo.getText().toString(), mImageProfil);
+
+                }
                 else{
                     user = users.get(game.getCounter()+1);
                 }

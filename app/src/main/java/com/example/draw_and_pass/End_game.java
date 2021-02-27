@@ -40,6 +40,8 @@ public class End_game extends Activity {
     private ArrayList<Event> events = new ArrayList<>();
     private User thomas;
     private static Game game;
+    private static User user;
+    private static Transition transition;
 
     private int nrb=0;
     ///////////////////////////////////////////////////////////////
@@ -149,9 +151,10 @@ public class End_game extends Activity {
                 drawing.setImageBitmap(event.getImage());
                 phrase.setText(event.getPhrase());
                 textView_name_person.setText(event.getUser().getName());
-                //imageView_icon_person.setImageResource(event.getUser().getIcon());
-                String ImageURL = ( "https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" );
-                Picasso.get().load(ImageURL).into(imageView_icon_person);
+                Log.d(TAG,"ok");
+                imageView_icon_person=event.getUser().getIcon();
+                Log.d(TAG,"ok");
+
             }
 
         }

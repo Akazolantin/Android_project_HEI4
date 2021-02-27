@@ -6,9 +6,9 @@ import android.widget.ImageView;
 public class User {
     private int id;
     private String name;
-    private Image icon;
+    private ImageView icon;
 
-    User(int mid, String mname, Image micon){
+    User(int mid, String mname, ImageView micon){
         this.id=mid;
         this.name=mname;
         this.icon=micon;
@@ -28,7 +28,7 @@ public class User {
 
     public void setIcon() {this.icon = icon; }
 
-    public Image getIcon() {
+    public ImageView getIcon() {
         return icon;
     }
 
