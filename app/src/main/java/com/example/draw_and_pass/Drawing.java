@@ -80,6 +80,7 @@ public class Drawing extends Activity {
         startActivity(intent);
     }
     private TextView timer;
+    private int currentColor,currentSize;
 
     CountDownTimer countDownTimer= new CountDownTimer(90000,1000) {
         @Override
@@ -103,11 +104,15 @@ public class Drawing extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawing);
         canvas  = (DrawLineCanvas) findViewById(R.id.canvas);
+        currentColor=0xff000000;
+        currentSize= 12;
         TextView phrase = (TextView) findViewById(R.id.phrase);
         phrase.setText(game.getEvents().get(game.getEvents().size()-2).getPhrase());
         Button button = (Button) findViewById(R.id.bouton);
         ImageButton pinceau = (ImageButton) findViewById(R.id.pinceau);
         ImageButton gomme = (ImageButton) findViewById(R.id.gomme);
+        ImageButton gros = (ImageButton) findViewById(R.id.increment);
+        ImageButton petit = (ImageButton) findViewById(R.id.decrement);
         timer = (TextView) findViewById(R.id.timer);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,8 +124,8 @@ public class Drawing extends Activity {
         pinceau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                canvas.setColor(0xff000000);
-                canvas.setSize(12);
+                canvas.setColor(currentColor);
+                canvas.setSize(currentSize);
             }
         });
         gomme.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +133,20 @@ public class Drawing extends Activity {
             public void onClick(View view) {
                 canvas.setColor(0xffffffff);
                 canvas.setSize(75);
+            }
+        });
+        gros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentSize+=10;
+                canvas.setSize(currentSize);
+            }
+        });
+        petit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentSize-=10;
+                canvas.setSize(currentSize);
             }
         });
         int[] Colors = new int[]{
@@ -150,7 +169,7 @@ public class Drawing extends Activity {
                 0xff795548,
                 0xff9E9E9E,
                 0xff607D8B,
-                0xffFFFFFF
+                0xff000000
         };
         LinearLayout linearUp= (LinearLayout) findViewById(R.id.color_up);
         LinearLayout linearDown= (LinearLayout) findViewById(R.id.color_down);
@@ -159,7 +178,9 @@ public class Drawing extends Activity {
         View.OnClickListener btnClicked = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                canvas.setColor(Colors[(int)view.getTag()]);
+                currentColor=Colors[(int)view.getTag()];
+                canvas.setColor(currentColor);
+                canvas.setSize(currentSize);
             }
         };
 
