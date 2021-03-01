@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -192,7 +193,9 @@ public class End_game extends Activity {
             }
         }
 
+        Toast.makeText(this,"Dessins enregistrés" , Toast.LENGTH_SHORT).show();
     }
+
 
     public void ClickOnRefresh(View view) {
         restart();
