@@ -7,12 +7,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Icon;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -27,9 +31,12 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class End_game extends Activity {
     String TAG = "thomas";
@@ -151,9 +158,16 @@ public class End_game extends Activity {
                 drawing.setImageBitmap(event.getImage());
                 phrase.setText(event.getPhrase());
                 textView_name_person.setText(event.getUser().getName());
-                //imageView_icon_person.setImageResource(event.getUser().getIcon());
-                String ImageURL = ( "https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" );
-                Picasso.get().load(ImageURL).into(imageView_icon_person);
+                if (event.getUser().getIcon()!= null) {
+                    BitmapDrawable drawable = (BitmapDrawable) event.getUser().getIcon().getDrawable();
+                    Bitmap bitmap = drawable.getBitmap();
+                    imageView_icon_person.setImageBitmap(bitmap);
+                }else{
+                    String ImageURL = ( "https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" );
+                    Picasso.get().load(ImageURL).into(imageView_icon_person);
+                }
+
+
             }
 
         }
@@ -168,20 +182,14 @@ public class End_game extends Activity {
 
     public void ClickOnShare(View view) {
 
+        ArrayList<Bitmap> lstImage= new ArrayList<Bitmap>();
+        for (int nb=0;nb<events.size();nb++){
+            if (game.getEvents().get(nb).getImage() != null) {
+                Bitmap image =game.getEvents().get(nb).getImage();
+                lstImage.add(image);
 
-
-        try {
-            ArrayList<Bitmap> lstImage= new ArrayList<Bitmap>();
-            for (int nb=0;nb<events.size();nb++){
-                lstImage.add(game.getEvents().get(nb).getImage());
-                if (game.getEvents().get(nb).getImage() != null) {
-                    FileOutputStream fileOutputStream = this.openFileOutput(game.getEvents().get(nb).getPhrase() + "_dessiné_par_" + game.getEvents().get(nb).getUser(), this.MODE_PRIVATE);
-                    game.getEvents().get(nb).getImage().compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
-                    fileOutputStream.close();
-                }
+                saveToInternalStorage(image,game.getEvents().get(nb).getUser().getName()+"_"+game.getEvents().get(nb-1).getPhrase());
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
 
     }
@@ -189,5 +197,25 @@ public class End_game extends Activity {
     public void ClickOnRefresh(View view) {
         restart();
 
+    }
+
+
+    private String saveToInternalStorage(Bitmap bitmapImage,String name){
+        File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File mypath=new File(directory,name+".jpg");
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return directory.getAbsolutePath();
     }
 }
