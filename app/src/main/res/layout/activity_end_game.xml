@@ -19,9 +19,24 @@
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="D\nr\na\nw\n&amp;\nP\na\ns\ns"
+                android:textSize="110px"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:background="@drawable/layout_bg">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:gravity="bottom"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:orientation="vertical"
+            >
             <ImageButton
                 android:id="@+id/share"
                 android:layout_width="150px"
