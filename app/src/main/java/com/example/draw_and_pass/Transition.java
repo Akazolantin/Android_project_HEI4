@@ -6,6 +6,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.nfc.Tag;
 import android.os.Bundle;
@@ -20,6 +22,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.net.CookieHandler;
 import java.util.ArrayList;
@@ -143,12 +147,7 @@ public class Transition extends Activity {
                 }
             });
 
-            if (game.getEvents().get(game.getEvents().size()-1).getImage() !=null){
-                mImageADeviner.setImageBitmap(game.getEvents().get(game.getEvents().size()-1).getImage());
-            }
-            else{
-                mTextADeviner.setText(game.getEvents().get(game.getEvents().size()-1).getPhrase());
-            }
+
 
         mPseudo.addTextChangedListener(new TextWatcher() {
             @Override
@@ -171,11 +170,25 @@ public class Transition extends Activity {
             setContentView(R.layout.activity_transition_alt);
             mNextButton = (Button) findViewById(R.id.activity_transition_next_activity);
             mImageProfil = (ImageView) findViewById(R.id.activity_transition_profil);
-            //mButtonProfil.setImage(users.get(game.getCounter()).getIcon());
+            mTextADeviner=(TextView) findViewById(R.id.texte_trouve_avant);
+            mImageADeviner=(ImageView) findViewById(R.id.image_dessine_avant);
+            if (users.get(game.getCounter()).getIcon()!= null) {
+                BitmapDrawable drawable = (BitmapDrawable) users.get(game.getCounter()).getIcon().getDrawable();
+                Bitmap bitmap = drawable.getBitmap();
+                mImageProfil.setImageBitmap(bitmap);
+            }else{
+                String ImageURL = ( "https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" );
+                Picasso.get().load(ImageURL).into(mImageProfil);
+            }
             TextView pseudo = (TextView) findViewById(R.id.activity_transition_pseudo);
-            pseudo.setText(users.get(game.getCounter()+1).getName());
+            pseudo.setText(users.get(game.getCounter()).getName());
         }
-
+        if (game.getEvents().get(game.getEvents().size()-1).getImage() !=null){
+            mImageADeviner.setImageBitmap(game.getEvents().get(game.getEvents().size()-1).getImage());
+        }
+        else{
+            mTextADeviner.setText(game.getEvents().get(game.getEvents().size()-1).getPhrase());
+        }
 
 
         mNextButton.setOnClickListener(new View.OnClickListener(){
@@ -190,7 +203,7 @@ public class Transition extends Activity {
 
                 }
                 else{
-                    user = users.get(game.getCounter()+1);
+                    user = users.get(game.getCounter());
                 }
 
 
@@ -205,7 +218,7 @@ public class Transition extends Activity {
                         Drawing.setGame(game);
                         startActivity(drawingActivity);
 
-                        Log.d(TAG, "2");
+                        Log.d(TAG, ""+game.getEvents().size());
                     } else {
                         Intent guessActivity = new Intent(Transition.this, Guess_the_word.class);
                         Guess_the_word.setGame(game);

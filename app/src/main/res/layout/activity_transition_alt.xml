@@ -9,43 +9,81 @@
     android:gravity="bottom">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="3"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="2">
 
-    </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/image_dessine_avant"
+                android:layout_gravity="center"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/texte_trouve_avant"
+                android:layout_gravity="center"
+                android:textSize="50dp"
+                />
+
+        </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
+        android:layout_height="0dp"
+        android:orientation="vertical"
         android:padding="5dp"
-        android:layout_gravity="bottom">
-        <ImageButton
+        android:layout_gravity="center"
+        android:weightSum="4"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Au tour de :"
+            android:textSize="30dp"
+            android:gravity="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:padding="5dp">
+        <ImageView
             android:id="@+id/activity_transition_profil"
-            android:layout_weight="0.75"
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
             android:layout_margin="10dp"
             android:layout_gravity="center"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:scaleType="fitXY"/>
         <TextView
             android:id="@+id/activity_transition_pseudo"
             android:layout_weight="2"
             android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:hint="Entre ton pseudo"
-            android:textSize="20dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:hint="pseudo"
+            android:textSize="40dp"
             />
-
+        </LinearLayout>
         <Button
             android:id="@+id/activity_transition_next_activity"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="0.73"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_gravity="center"
-            android:text="NEXT"/>
-
+            android:text="NEXT"
+            android:textSize="30dp"/>
+    </LinearLayout>
     </LinearLayout>
 </LinearLayout>

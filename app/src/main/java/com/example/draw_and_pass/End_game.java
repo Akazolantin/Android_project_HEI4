@@ -85,11 +85,13 @@ public class End_game extends Activity {
     public void restart(){
         Intent start = new Intent(this,Transition.class);
         Game newGame= new Game(game.getId()+1,game.getNbrevent(),new ArrayList<Event>(),null);
-        game.addEvent(new Event(game.getEvents().get(0).getUser(),"Thomas"));
+        newGame.addEvent(new Event(game.getEvents().get(0).getUser(),"Thomas"));
         ArrayList<User> users = new ArrayList<User>();
-        for(Event event : game.getEvents()){
-            users.add(event.getUser());
+        for(int i=2;i<game.getEvents().size();i++){
+            users.add(game.getEvents().get(i).getUser());
         }
+        users.add(game.getEvents().get(1).getUser());
+        Log.d(TAG,""+users.size());
         Transition.setGame(newGame);
         Transition.setUsers(users);
         startActivity(start);
@@ -147,15 +149,9 @@ public class End_game extends Activity {
                 textView_name_person = itemView.findViewById(R.id.name_person);
                 drawing = itemView.findViewById(R.id.drawing);
                 phrase = itemView.findViewById(R.id.phrase);
-
-
             }
 
             public void setSummary(Event event,int nbr) {
-
-
-
-
                 drawing.setImageBitmap(event.getImage());
                 phrase.setText(event.getPhrase());
                 textView_name_person.setText(event.getUser().getName());
@@ -167,15 +163,12 @@ public class End_game extends Activity {
                     String ImageURL = ( "https://i.pinimg.com/originals/7c/c7/a6/7cc7a630624d20f7797cb4c8e93c09c1.png" );
                     Picasso.get().load(ImageURL).into(imageView_icon_person);
                 }
-
-
             }
-
         }
-
-
     }
+
     public void ClickOnHome(View view) {
+        Transition.setUsers(null);
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
 
@@ -192,14 +185,12 @@ public class End_game extends Activity {
                 saveToInternalStorage(image,game.getEvents().get(nb).getUser().getName()+"_"+game.getEvents().get(nb-1).getPhrase());
             }
         }
-
         Toast.makeText(this,"Dessins enregistrés" , Toast.LENGTH_SHORT).show();
     }
 
 
     public void ClickOnRefresh(View view) {
         restart();
-
     }
 
 
