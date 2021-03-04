@@ -199,6 +199,7 @@ public class Transition extends Activity {
                                 intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
 
                                 startActivityForResult(intent, PHOTO_RESULT);
+                                //onActivityResult();
                             }
 
 
