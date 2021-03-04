@@ -43,15 +43,18 @@
         android:orientation="vertical">
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="50dp"
             android:backgroundTint="#93B7BE"
-            android:id="@+id/transition_button_up"/>
+            android:id="@+id/transition_button_up"
+            android:text="+"
+            android:textColor="#2D3047"
+            android:textAlignment="center"/>
 
     <ImageButton
         android:id="@+id/activity_transition_profil"
 
-         android:layout_width="100dp"
+         android:layout_width="80dp"
          android:layout_height="80dp"
          android:layout_margin="5dp"
         android:paddingLeft="5dp"
@@ -62,10 +65,13 @@
      />
 
         <Button
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="50dp"
             android:backgroundTint="#93B7BE"
-            android:id="@+id/transition_button_down"/>
+            android:id="@+id/transition_button_down"
+            android:text="-"
+            android:textAlignment="center"
+            android:textColor="#2D3047"/>
 
     </LinearLayout>
     <EditText

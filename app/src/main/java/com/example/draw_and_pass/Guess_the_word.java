@@ -2,6 +2,7 @@ package com.example.draw_and_pass;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,7 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class Guess_the_word extends AppCompatActivity {
+public class Guess_the_word extends Activity {
 
     String Response_value;
 
