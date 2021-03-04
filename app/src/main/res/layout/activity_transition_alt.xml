@@ -24,7 +24,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/image_dessine_avant"
-                android:layout_gravity="center"></ImageView>
+                android:layout_gravity="center"
+                ></ImageView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -42,6 +43,8 @@
         android:padding="5dp"
         android:layout_gravity="center"
         android:weightSum="4"
+        android:background="#2D3047"
+
         android:layout_weight="1">
         <TextView
             android:layout_width="match_parent"
@@ -49,6 +52,7 @@
             android:layout_weight="1"
             android:text="Au tour de :"
             android:textSize="30dp"
+            android:textColor="#93B7BE"
             android:gravity="center"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,7 +69,8 @@
             android:layout_margin="10dp"
             android:layout_gravity="center"
             tools:srcCompat="@tools:sample/avatars"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"/>
         <TextView
             android:id="@+id/activity_transition_pseudo"
             android:layout_weight="2"
@@ -74,6 +79,8 @@
             android:gravity="center"
             android:hint="pseudo"
             android:textSize="40dp"
+            android:textColor="#93B7BE"
+            android:textColorHint="#93B7BE"
             />
         </LinearLayout>
         <Button
@@ -83,7 +90,10 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:text="NEXT"
-            android:textSize="30dp"/>
+            android:textSize="30dp"
+            android:backgroundTint="#93B7BE"
+            android:color="#2D3047"
+            android:textColor="#2D3047"/>
     </LinearLayout>
     </LinearLayout>
 </LinearLayout>

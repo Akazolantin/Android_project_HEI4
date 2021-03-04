@@ -14,6 +14,8 @@ public class User {
         this.icon=micon;
     }
 
+
+
     public int getId() {
         return id;
     }
@@ -26,10 +28,14 @@ public class User {
         return name;
     }
 
-    public void setIcon() {this.icon = icon; }
+
 
     public ImageView getIcon() {
         return icon;
+    }
+
+    public  void setIcon(ImageView icon) {
+        this.icon=icon;
     }
 
     public void setName(String name) {

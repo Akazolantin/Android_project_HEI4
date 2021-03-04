@@ -34,6 +34,7 @@
     android:layout_height="200dp"
     android:orientation="horizontal"
     android:padding="5dp"
+    android:background="#2D3047"
     android:layout_gravity="bottom">
     <LinearLayout
         android:layout_weight="0.75"
@@ -44,20 +45,26 @@
         <Button
             android:layout_width="100dp"
             android:layout_height="50dp"
+            android:backgroundTint="#93B7BE"
             android:id="@+id/transition_button_up"/>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/activity_transition_profil"
 
-    android:layout_width="100dp"
-    android:layout_height="80dp"
-    android:layout_margin="5dp"
+         android:layout_width="100dp"
+         android:layout_height="80dp"
+         android:layout_margin="5dp"
+        android:paddingLeft="5dp"
         android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:backgroundTint="#93B7BE"
      />
 
         <Button
             android:layout_width="100dp"
             android:layout_height="50dp"
+            android:backgroundTint="#93B7BE"
             android:id="@+id/transition_button_down"/>
 
     </LinearLayout>
@@ -68,6 +75,9 @@
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginLeft="20dp"
+        android:textColorHint="#93B7BE"
+        android:textColor="#93B7BE"
+        android:backgroundTint="#93B7BE"
         android:hint="Entre ton pseudo"
         android:textSize="20dp"
         />
@@ -79,6 +89,8 @@
         android:layout_marginLeft="10dp"
         android:layout_weight="0.73"
         android:layout_gravity="center"
+        android:backgroundTint="#93B7BE"
+        android:textColor="#2D3047"
         android:text="NEXT"/>
 
 </LinearLayout>

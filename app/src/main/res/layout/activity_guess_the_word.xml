@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Guess_the_word"
     android:orientation="vertical"
-    android:padding="5dp">
+    >
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="600dp"
     android:orientation="vertical"
     android:paddingBottom="10dp">
     <ImageView
@@ -18,13 +17,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="250dp"/>
 </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="#2D3047">
 
 
     <EditText
@@ -32,13 +32,20 @@
         android:layout_width="305dp"
         android:layout_height="100dp"
         android:hint="Devine ce que c'est"
+        android:backgroundTint="#93B7BE"
+        android:textColorHint="#93B7BE"
+        android:textColor="#93B7BE"
+        android:layout_marginRight="10dp"
         />
 
         <Button
         android:id="@+id/activity_guess_Button"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="Confirm"
+
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="Confirmer"
+            android:backgroundTint="#93B7BE"
+            android:textColor="#2D3047"
         />
 
     </LinearLayout>
