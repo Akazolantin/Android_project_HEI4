@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.net.Uri;
 import android.nfc.Tag;
@@ -41,7 +42,7 @@ import java.util.Date;
 
 
 public class Transition extends Activity {
-    private static final int PHOTO_RESULT = 0;
+    //private static final int PHOTO_RESULT = 0;
     private EditText mPseudo;
     private Button mNextButton;
     private Button mButtonUp;
@@ -54,22 +55,15 @@ public class Transition extends Activity {
    private TextView mTextADeviner;
    private ImageView mImageADeviner;
 
+
     private File mFichier;
+    private ImageView  imagePhoto;
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        if (requestCode == PHOTO_RESULT && resultCode== RESULT_OK){
-            if (data != null){
 
-                Bitmap photoUser = BitmapFactory.decodeFile("mFichier");
-            }
-        }
 
-    }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
     private boolean back_answer = false;
-
+    ArrayList<Integer> avatars = new ArrayList<>();
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -130,7 +124,7 @@ public class Transition extends Activity {
 
 
 
-            ArrayList<Integer> avatars = new ArrayList<>();
+
             avatars.add(R.drawable.boy);
             avatars.add(R.drawable.designer);
             avatars.add(R.drawable.girl);
@@ -181,30 +175,14 @@ public class Transition extends Activity {
 
 
 
-
-
                     mImageProfil.setOnClickListener(new View.OnClickListener() {
-
                         @Override
                         public void onClick(View v) {
                             if(positionAvatar==9) {
-                                System.out.println("position" + positionAvatar);
-                                mFichier = new File(Environment.getExternalStorageDirectory(), "photo.png");
-                                Uri fileUri ;
-                                fileUri = FileProvider.getUriForFile(
-                                        Transition.this,
-                                        "com.example.draw_and_pass.fileprovider",
-                                        mFichier);
                                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-
-                                startActivityForResult(intent, PHOTO_RESULT);
-                                //onActivityResult();
+                                startActivityForResult(intent,0);
                             }
-
-
                         }
-
                     });
 
 
@@ -299,6 +277,17 @@ public class Transition extends Activity {
 
 
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode != RESULT_CANCELED) {
+
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            imagePhoto.setImageBitmap(bitmap);
+
+            mImageProfil.setImageBitmap(bitmap);
+        }
     }
 
 }
