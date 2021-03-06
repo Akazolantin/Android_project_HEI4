@@ -203,6 +203,9 @@ public class Transition extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mNextButton.setEnabled(s.toString().length() >1);
+                if(s.toString().length()>1){mNextButton.setBackgroundColor(0xff93B7BE);}else{
+                    mNextButton.setBackgroundColor(0xff808080);
+                }
             }
 
             @Override

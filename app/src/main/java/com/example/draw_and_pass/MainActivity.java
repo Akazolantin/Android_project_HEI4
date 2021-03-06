@@ -26,11 +26,24 @@ public class MainActivity extends Activity {
     private Button mButton_to_decrement;
     private static Game game;
 
+    private static String[] personnage= new String[]{
+        "Bob l'éponge","Superman","Trump","IronMan","Un ours","Mario","Cléopatre","Batman","Un pirate","Un chat",
+            "Mickey","Asterix","Une fée","Un télétubbie","Un T-rex","Un loup","Napoléon","Pac-Man","Pikachu","Un monstre"
+    };
+    private static String[] action= new String[]{
+        "mange une banane.","fait du vélo.","fait une roulade.","dessine.","nage.","cuisine.","mange une glasse.","qui joue au badminton.","court","dort.",
+            "rigole.","tombe.","jongle.","fait du ski.","monte un meuble.","arose ses plantes.","joue à la wii.","caresse un chat.","danse.","regarde la télé."
+    };
+
+    public static String generatePhrase(){
+        String phrase = personnage[(int)(Math.random()*personnage.length)]+" qui "+action[(int)(Math.random()*action.length)];
+        return(phrase);
+    }
 
     public void gotoOtherActivity(){
         Intent intent = new Intent(this,Transition.class);
         Game game = new Game(0,nbr_player,new ArrayList<Event>(),null);// prendre les arguments sauvegardés dans le start game
-        game.addEvent(new Event(new User(0,"toto",null),"Thomas"));
+        game.addEvent(new Event(new User(0,"toto",null),generatePhrase()));
         Transition.setGame(game);
         startActivity(intent);
     }

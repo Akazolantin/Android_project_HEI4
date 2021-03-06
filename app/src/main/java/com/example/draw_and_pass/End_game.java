@@ -85,7 +85,7 @@ public class End_game extends Activity {
     public void restart(){
         Intent start = new Intent(this,Transition.class);
         Game newGame= new Game(game.getId()+1,game.getNbrevent(),new ArrayList<Event>(),null);
-        newGame.addEvent(new Event(game.getEvents().get(0).getUser(),"Thomas"));
+        newGame.addEvent(new Event(game.getEvents().get(0).getUser(),MainActivity.generatePhrase()));
         ArrayList<User> users = new ArrayList<User>();
         for(int i=2;i<game.getEvents().size();i++){
             users.add(game.getEvents().get(i).getUser());

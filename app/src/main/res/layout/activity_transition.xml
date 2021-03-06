@@ -95,7 +95,7 @@
         android:layout_marginLeft="10dp"
         android:layout_weight="0.73"
         android:layout_gravity="center"
-        android:backgroundTint="#93B7BE"
+        android:background="#808080"
         android:textColor="#2D3047"
         android:text="NEXT"/>
 

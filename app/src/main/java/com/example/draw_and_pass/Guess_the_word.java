@@ -6,6 +6,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -83,6 +85,9 @@ public class Guess_the_word extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mButtonToTransition.setEnabled(s.toString().length() != 0);
+                if(s.toString().length() != 0){mButtonToTransition.setBackgroundColor(0xff93B7BE);}else{
+                    mButtonToTransition.setBackgroundColor(0xff808080);
+                }
                 Response_value = mReponse.getText().toString();
             }
 
