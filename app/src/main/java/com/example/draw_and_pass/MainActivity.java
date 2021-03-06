@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
             "Mickey","Asterix","Une fée","Un télétubbie","Un T-rex","Un loup","Napoléon","Pac-Man","Pikachu","Un monstre"
     };
     private static String[] action= new String[]{
-        "mange une banane.","fait du vélo.","fait une roulade.","dessine.","nage.","cuisine.","mange une glasse.","qui joue au badminton.","court","dort.",
+        "mange une banane.","fait du vélo.","fait une roulade.","dessine.","nage.","cuisine.","mange une glasse.","joue au badminton.","court","dort.",
             "rigole.","tombe.","jongle.","fait du ski.","monte un meuble.","arose ses plantes.","joue à la wii.","caresse un chat.","danse.","regarde la télé."
     };
 
