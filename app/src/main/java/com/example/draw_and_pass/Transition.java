@@ -119,7 +119,7 @@ public class Transition extends Activity {
                     new String[]{
                             Manifest.permission.CAMERA
                     },
-                    100);
+                    0);
         }
 
         if(users ==null) {
