@@ -111,6 +111,8 @@ public class Transition extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        positionAvatar=0;
+
 
         if(ContextCompat.checkSelfPermission(Transition.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(Transition.this,
@@ -119,7 +121,7 @@ public class Transition extends Activity {
                     },
                     100);
         }
-        positionAvatar=0;
+
         if(users ==null) {
             setContentView(R.layout.activity_transition);
             mImageProfil=(ImageButton) findViewById(R.id.activity_transition_profil);
