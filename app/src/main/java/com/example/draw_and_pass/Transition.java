@@ -56,7 +56,7 @@ public class Transition extends Activity {
     private static Game game;
    private final String TAG = "toto";
    private static ArrayList<User> users;
-   private int positionAvatar;
+   private int positionAvatar=0;
    private TextView mTextADeviner;
    private ImageView mImageADeviner;
     private  int variableCam=0;
@@ -146,11 +146,10 @@ public class Transition extends Activity {
                 avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.man2));
                 avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.boy1));
                 avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.reporter));
-                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.photocamera));
-            mImageProfil.setImageBitmap(avatars.get(positionAvatar))*/
+                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.photocamera));*/
 
             setTableau();
-
+            mImageProfil.setImageBitmap(avatars.get(positionAvatar));
 
             mButtonUp.setOnClickListener(new View.OnClickListener() {
                 @Override
