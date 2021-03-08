@@ -59,7 +59,7 @@ public class Transition extends Activity {
    private int positionAvatar;
    private TextView mTextADeviner;
    private ImageView mImageADeviner;
-    private  int variableCam=0;
+    private  boolean cameraIcon,nonNullText;
 
     private File mFichier;
     private ImageView  imagePhoto;
@@ -136,21 +136,7 @@ public class Transition extends Activity {
 
             mNextButton.setEnabled(false);
 
-             /*
-                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.boy));
-                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.designer));
-                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.girl));
-                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.hacker));
-                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.man));
-                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.man1));
-                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.man2));
-                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.boy1));
-                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.reporter));
-                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.photocamera));
-            mImageProfil.setImageBitmap(avatars.get(positionAvatar))*/
-
             setTableau();
-            mImageProfil.setImageBitmap(avatars.get(positionAvatar));
 
             mButtonUp.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -166,6 +152,21 @@ public class Transition extends Activity {
                         positionAvatar =0;
                         mImageProfil.setImageBitmap(avatars.get(positionAvatar));
                     }
+                    if(positionAvatar==9){
+                        cameraIcon=true;
+                        mImageProfil.setEnabled(true);
+                    }
+                    else{
+                        cameraIcon=false;
+                        mImageProfil.setEnabled(false);
+                    }
+                    if(nonNullText&&!cameraIcon){
+                        mNextButton.setEnabled(true);
+                        mNextButton.setBackgroundColor(0xff93B7BE);
+                    }else{
+                        mNextButton.setEnabled(false);
+                        mNextButton.setBackgroundColor(0xff808080);
+                    }
                 }
             });
             mButtonDown.setOnClickListener(new View.OnClickListener() {
@@ -179,6 +180,21 @@ public class Transition extends Activity {
                         positionAvatar--;
                         mImageProfil.setImageBitmap(avatars.get(positionAvatar));
                     }
+                    if(positionAvatar==9){
+                        cameraIcon=true;
+                        mImageProfil.setEnabled(true);
+                    }
+                    else{
+                        cameraIcon=false;
+                        mImageProfil.setEnabled(false);
+                    }
+                    if(nonNullText&&!cameraIcon){
+                        mNextButton.setEnabled(true);
+                        mNextButton.setBackgroundColor(0xff93B7BE);
+                    }else{
+                        mNextButton.setEnabled(false);
+                        mNextButton.setBackgroundColor(0xff808080);
+                    }
                 }
             });
 
@@ -187,10 +203,8 @@ public class Transition extends Activity {
                     mImageProfil.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if(positionAvatar==9) {
-                                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                startActivityForResult(intent,100);
-                            }
+                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            startActivityForResult(intent,100);
                         }
                     });
 
@@ -211,8 +225,17 @@ public class Transition extends Activity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mNextButton.setEnabled(s.toString().length() >1);
-                if(s.toString().length()>1){mNextButton.setBackgroundColor(0xff93B7BE);}else{
+
+                if(s.toString().length()>1){
+                    nonNullText=true;}
+                else{
+                    nonNullText=false;
+                }
+                if(nonNullText&&!cameraIcon){
+                    mNextButton.setEnabled(true);
+                    mNextButton.setBackgroundColor(0xff93B7BE);
+                }else{
+                    mNextButton.setEnabled(false);
                     mNextButton.setBackgroundColor(0xff808080);
                 }
             }
@@ -303,18 +326,16 @@ public class Transition extends Activity {
             avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.boy1));
             avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.reporter));
             avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.photocamera));
-            if(variableCam==1){
-                avatars.add(captureImage);
-            }
-            System.out.println(variableCam);
+            mImageProfil.setImageBitmap(avatars.get(positionAvatar));
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         if (requestCode==100){
             captureImage =(Bitmap) data.getExtras().get("data");
-            variableCam=1;
-            setTableau();
+            avatars.add(captureImage);
+            positionAvatar=avatars.size()-1;
+            mImageProfil.setImageBitmap(avatars.get(positionAvatar));
         }
     }
 
