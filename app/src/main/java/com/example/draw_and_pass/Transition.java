@@ -1,13 +1,18 @@
 package com.example.draw_and_pass;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Bitmap;
@@ -54,16 +59,17 @@ public class Transition extends Activity {
    private int positionAvatar;
    private TextView mTextADeviner;
    private ImageView mImageADeviner;
-
+    private  int variableCam=0;
 
     private File mFichier;
     private ImageView  imagePhoto;
+    private Bitmap captureImage;
 
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     private boolean back_answer = false;
-    ArrayList<Integer> avatars = new ArrayList<>();
+    ArrayList<Bitmap> avatars = new ArrayList<>();
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -105,6 +111,14 @@ public class Transition extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(ContextCompat.checkSelfPermission(Transition.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(Transition.this,
+                    new String[]{
+                            Manifest.permission.CAMERA
+                    },
+                    100);
+        }
         positionAvatar=0;
         if(users ==null) {
             setContentView(R.layout.activity_transition);
@@ -122,25 +136,20 @@ public class Transition extends Activity {
 
             mNextButton.setEnabled(false);
 
+             /*
+                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.boy));
+                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.designer));
+                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.girl));
+                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.hacker));
+                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.man));
+                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.man1));
+                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.man2));
+                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.boy1));
+                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.reporter));
+                avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.photocamera));
+            mImageProfil.setImageBitmap(avatars.get(positionAvatar))*/
 
-
-
-            avatars.add(R.drawable.boy);
-            avatars.add(R.drawable.designer);
-            avatars.add(R.drawable.girl);
-            avatars.add(R.drawable.hacker);
-            avatars.add(R.drawable.man);
-            avatars.add(R.drawable.man1);
-            avatars.add(R.drawable.man2);
-            avatars.add(R.drawable.boy1);
-            avatars.add(R.drawable.reporter);
-            avatars.add(R.drawable.photocamera);
-
-            mImageProfil.setImageResource(avatars.get(positionAvatar));
-
-
-
-
+            setTableau();
 
 
             mButtonUp.setOnClickListener(new View.OnClickListener() {
@@ -150,12 +159,12 @@ public class Transition extends Activity {
 
                     if(positionAvatar<(avatars.size()-1)){
                         positionAvatar++;
-                        mImageProfil.setImageResource(avatars.get(positionAvatar));
+                        mImageProfil.setImageBitmap(avatars.get(positionAvatar));
 
                     }
                     else{
                         positionAvatar =0;
-                        mImageProfil.setImageResource(avatars.get(positionAvatar));
+                        mImageProfil.setImageBitmap(avatars.get(positionAvatar));
                     }
                 }
             });
@@ -163,12 +172,12 @@ public class Transition extends Activity {
                 @Override
                 public void onClick(View v) {
                     if(positionAvatar==0){
-                        positionAvatar=9;
-                        mImageProfil.setImageResource(avatars.get(positionAvatar));
+                        positionAvatar=avatars.size()-1;
+                        mImageProfil.setImageBitmap(avatars.get(positionAvatar));
                     }
                     else{
                         positionAvatar--;
-                        mImageProfil.setImageResource(avatars.get(positionAvatar));
+                        mImageProfil.setImageBitmap(avatars.get(positionAvatar));
                     }
                 }
             });
@@ -180,7 +189,7 @@ public class Transition extends Activity {
                         public void onClick(View v) {
                             if(positionAvatar==9) {
                                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                startActivityForResult(intent,0);
+                                startActivityForResult(intent,100);
                             }
                         }
                     });
@@ -281,16 +290,37 @@ public class Transition extends Activity {
 
 
     }
+
+    private void setTableau() {
+
+            avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.boy));
+            avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.designer));
+            avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.girl));
+            avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.hacker));
+            avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.man));
+            avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.man1));
+            avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.man2));
+            avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.boy1));
+            avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.reporter));
+            avatars.add(BitmapFactory.decodeResource(getResources(), R.drawable.photocamera));
+            if(variableCam==1){
+                avatars.add(captureImage);
+            }
+            System.out.println(variableCam);
+
+    }
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode != RESULT_CANCELED) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        if (requestCode==100){
+            captureImage =(Bitmap) data.getExtras().get("data");
+            variableCam=1;
+            setTableau();
 
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            imagePhoto.setImageBitmap(bitmap);
 
-            mImageProfil.setImageBitmap(bitmap);
+
         }
     }
 
 }
+
