@@ -331,11 +331,17 @@ public class Transition extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
-        if (requestCode==100){
+        if (requestCode==100&&data!=null){
             captureImage =(Bitmap) data.getExtras().get("data");
             avatars.add(captureImage);
             positionAvatar=avatars.size()-1;
             mImageProfil.setImageBitmap(avatars.get(positionAvatar));
+            mImageProfil.setEnabled(false);
+            cameraIcon=false;
+            if(nonNullText){
+                mNextButton.setEnabled(true);
+                mNextButton.setBackgroundColor(0xff93B7BE);
+            }
         }
     }
 
