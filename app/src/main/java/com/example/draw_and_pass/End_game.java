@@ -11,6 +11,7 @@ import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Icon;
@@ -84,8 +85,9 @@ public class End_game extends Activity {
 
     public void restart(){
         Intent start = new Intent(this,Transition.class);
-        Game newGame= new Game(game.getId()+1,game.getNbrevent(),new ArrayList<Event>(),null);
-        newGame.addEvent(new Event(game.getEvents().get(0).getUser(),MainActivity.generatePhrase()));
+        Game newGame= new Game(game.getId()+1,game.getNbrevent(),new ArrayList<Event>(),null);ImageView image = new ImageView(this);
+        image.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.robot));
+        newGame.addEvent(new Event(new User(0,"Ordinateur", image),MainActivity.generatePhrase()));
         ArrayList<User> users = new ArrayList<User>();
         for(int i=2;i<game.getEvents().size();i++){
             users.add(game.getEvents().get(i).getUser());

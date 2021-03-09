@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -43,7 +45,9 @@ public class MainActivity extends Activity {
     public void gotoOtherActivity(){
         Intent intent = new Intent(this,Transition.class);
         Game game = new Game(0,nbr_player,new ArrayList<Event>(),null);// prendre les arguments sauvegardés dans le start game
-        game.addEvent(new Event(new User(0,"toto",null),generatePhrase()));
+        ImageView image = new ImageView(this);
+        image.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.robot));
+        game.addEvent(new Event(new User(0,"Ordinateur", image),generatePhrase()));
         Transition.setGame(game);
         startActivity(intent);
     }
