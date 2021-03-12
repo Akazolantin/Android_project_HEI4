@@ -9,10 +9,9 @@ public class Event {
     private String phrase;
     private String phraseTofind;
 
-    public Event(User user, Bitmap image,String phraseTofind) {
+    public Event(User user) {
         this.user = user;
-        this.image = image;
-        this.phraseTofind=phraseTofind;
+
     }
 
     public Event(User user, String phrase) {
@@ -43,6 +42,7 @@ public class Event {
     public void setPhrase(String phrase) {
         this.phrase = phrase;
     }
+
 
     public String getPhraseTofind() {
         return phraseTofind;

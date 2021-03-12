@@ -2,16 +2,23 @@ package com.example.draw_and_pass;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-public class Guess_the_word extends AppCompatActivity {
+public class Guess_the_word extends Activity {
 
     String Response_value;
 
@@ -21,6 +28,41 @@ public class Guess_the_word extends AppCompatActivity {
     private ImageView mImageview;
 
     private static Game game;
+
+    public static void setGame(Game game) {
+
+        Guess_the_word.game = game;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    private boolean back_answer = false;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (game.getCounter()>0) {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                boolean debugState = false;
+                if (debugState) {
+                    Toast.makeText(this, "BACK key press", Toast.LENGTH_SHORT).show();
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Vous ne pouvez pas tricher !")
+                        .setCancelable(false)
+                        .setPositiveButton("Oh MINCE !!", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                back_answer = true;
+                            }
+                        });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+
+        }
+        return back_answer;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +74,7 @@ public class Guess_the_word extends AppCompatActivity {
 
         mButtonToTransition.setEnabled(false);
 
-        mImageview.setImageBitmap(game.getEvents().get(-2).getImage());
+        mImageview.setImageBitmap(game.getEvents().get(game.getEvents().size()-2).getImage());
 
         mReponse.addTextChangedListener(new TextWatcher() {
             @Override
@@ -43,6 +85,9 @@ public class Guess_the_word extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mButtonToTransition.setEnabled(s.toString().length() != 0);
+                if(s.toString().length() != 0){mButtonToTransition.setBackgroundColor(0xff93B7BE);}else{
+                    mButtonToTransition.setBackgroundColor(0xff808080);
+                }
                 Response_value = mReponse.getText().toString();
             }
 
@@ -55,11 +100,19 @@ public class Guess_the_word extends AppCompatActivity {
         mButtonToTransition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                game.getEvents().get(-1).setPhrase(Response_value);
+                game.getEvents().get(game.getEvents().size()-1).setPhrase(Response_value);
                 Response_value = mReponse.getText().toString();
-                Intent transitionActivity = new Intent(Guess_the_word.this, Transition.class);
-                startActivity(transitionActivity);
+                Intent intent;
+                if (game.getCounter() < game.getNbrevent()) {
+                    intent= new Intent(Guess_the_word.this,Transition.class);
+                    Transition.setGame(game);
+                }else{
+                    intent = new Intent(Guess_the_word.this,End_game.class);
+                    End_game.setGame(game);
+                }
+                startActivity(intent);
             }
+
         });
     }
 }

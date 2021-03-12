@@ -44,7 +44,54 @@
                     android:id="@+id/gomme"
                     android:scaleType="fitXY"/>
             </LinearLayout>
-
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="60"
+                android:weightSum="2"
+                android:orientation="vertical"
+                android:paddingVertical="1dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:weightSum="100"
+                    android:orientation="horizontal"
+                    android:id="@+id/color_up"
+                    android:paddingHorizontal="1dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:weightSum="100"
+                    android:orientation="horizontal"
+                    android:id="@+id/color_down"
+                    android:paddingHorizontal="1dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="20"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2"
+                >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:backgroundTint="#93B7BE"
+                    android:layout_height="0dp"
+                    android:src="@drawable/gros"
+                    android:id="@+id/increment"
+                    android:scaleType="fitXY"/>
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:backgroundTint="#93B7BE"
+                    android:layout_height="0dp"
+                    android:src="@drawable/petit"
+                    android:id="@+id/decrement"
+                    android:scaleType="fitXY"/>
+            </LinearLayout>
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
