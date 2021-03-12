@@ -197,6 +197,7 @@ public class End_game extends Activity {
 
 
     private String saveToInternalStorage(Bitmap bitmapImage,String name){
+
         File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         File mypath=new File(directory,name+".jpg");
         FileOutputStream fos = null;
